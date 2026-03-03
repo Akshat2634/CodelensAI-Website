@@ -2,7 +2,7 @@
 
 The promotional landing page for [CodelensAI](https://github.com/Akshat2634/Codelens-AI) (`claude-roi`) — the open-source ROI dashboard that ties your Claude Code token spend to actual git output.
 
-**Live site**: [codelensai.dev](https://codelensai.dev)
+**Live site**: [codelensai.dev](codelensai-dev.vercel.app)
 
 ## Tech Stack
 
