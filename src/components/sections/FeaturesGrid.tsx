@@ -262,15 +262,24 @@ function SparklineMini() {
 
 function TerminalMini() {
   return (
-    <div className="dark mt-4 rounded-lg bg-terminal-content-bg px-3 py-2.5">
-      <div className="flex items-center gap-2">
-        <span className="text-accent-teal font-mono text-xs">$</span>
-        <span className="font-mono text-xs text-text-primary">
-          npx claude-roi
-        </span>
+    <div className="dark mt-4 overflow-hidden rounded-lg border border-white/[0.06] bg-[#1a1a2e]">
+      {/* Window chrome */}
+      <div className="flex items-center gap-1.5 px-3 py-2 bg-white/[0.03]">
+        <div className="h-[7px] w-[7px] rounded-full bg-[#ff5f57]" />
+        <div className="h-[7px] w-[7px] rounded-full bg-[#febc2e]" />
+        <div className="h-[7px] w-[7px] rounded-full bg-[#28c840]" />
       </div>
-      <div className="mt-1 font-mono text-[10px] text-text-tertiary">
-        ✓ Dashboard ready
+      {/* Content */}
+      <div className="bg-[#0d1117] px-3 py-2.5">
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-xs text-[#2ecc71]">$</span>
+          <span className="font-mono text-xs text-[#f0f2f5]">
+            npx claude-roi
+          </span>
+        </div>
+        <div className="mt-1 font-mono text-[10px] text-[#4a5067]">
+          ✓ Dashboard ready
+        </div>
       </div>
     </div>
   );

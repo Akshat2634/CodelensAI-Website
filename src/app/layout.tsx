@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { outfit, jetbrainsMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
@@ -139,6 +140,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
