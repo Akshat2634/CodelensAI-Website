@@ -1,0 +1,49 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E67E22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2ECC71;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="orb1" cx="15%" cy="30%" r="40%">
+      <stop offset="0%" style="stop-color:#E67E22;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#E67E22;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="orb2" cx="85%" cy="70%" r="35%">
+      <stop offset="0%" style="stop-color:#2ECC71;stop-opacity:0.06" />
+      <stop offset="100%" style="stop-color:#2ECC71;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#06080F"/>
+  <rect width="1200" height="630" fill="url(#orb1)"/>
+  <rect width="1200" height="630" fill="url(#orb2)"/>
+
+  <!-- Logo bars -->
+  <rect x="80" y="80" width="6" height="24" rx="2" fill="#E67E22"/>
+  <rect x="90" y="72" width="6" height="40" rx="2" fill="#2ECC71"/>
+  <rect x="100" y="76" width="6" height="32" rx="2" fill="#3498DB"/>
+
+  <!-- Logo text -->
+  <text x="116" y="100" font-family="monospace" font-size="24" font-weight="bold" fill="#F0F2F5">CodelensAI</text>
+
+  <!-- Headline -->
+  <text x="80" y="240" font-family="system-ui, sans-serif" font-size="64" font-weight="bold" fill="#F0F2F5">Stop guessing.</text>
+  <text x="80" y="320" font-family="system-ui, sans-serif" font-size="64" font-weight="bold" fill="url(#grad)">Start measuring.</text>
+
+  <!-- Subheadline -->
+  <text x="80" y="390" font-family="system-ui, sans-serif" font-size="24" fill="#8B92A5">The open-source ROI dashboard for Claude Code.</text>
+  <text x="80" y="425" font-family="system-ui, sans-serif" font-size="24" fill="#8B92A5">One command: npx claude-roi</text>
+
+  <!-- Terminal pill -->
+  <rect x="80" y="470" width="300" height="48" rx="12" fill="#121620" stroke="#2ECC71" stroke-width="1.5"/>
+  <text x="104" y="501" font-family="monospace" font-size="18" fill="#2ECC71">$ npx claude-roi</text>
+
+  <!-- Stats -->
+  <text x="440" y="501" font-family="monospace" font-size="16" fill="#4A5067">1,072+ downloads  ·  MIT License  ·  Zero Config</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="626" width="1200" height="4">
+    <animate attributeName="fill" values="#E67E22;#2ECC71;#3498DB;#E67E22" dur="4s" repeatCount="indefinite"/>
+  </rect>
+</svg>

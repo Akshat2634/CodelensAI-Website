@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+:root,
+.dark {
+  /* Base Dark Theme */
+  --bg-primary: #06080f;
+  --bg-secondary: #0c1018;
+  --bg-elevated: #121620;
+  --bg-glass: rgba(18, 22, 32, 0.7);
+  --bg-glass-hover: rgba(18, 22, 32, 0.85);
+
+  /* Text Hierarchy */
+  --text-primary: #f0f2f5;
+  --text-secondary: #8b92a5;
+  --text-tertiary: #4a5067;
+
+  /* Accent Colors */
+  --accent-orange: #e67e22;
+  --accent-orange-dim: rgba(230, 126, 34, 0.15);
+  --accent-teal: #2ecc71;
+  --accent-teal-dim: rgba(46, 204, 113, 0.15);
+  --accent-blue: #3498db;
+  --accent-blue-dim: rgba(52, 152, 219, 0.15);
+  --accent-red: #e74c3c;
+  --accent-red-dim: rgba(231, 76, 60, 0.15);
+  --accent-purple: #9b59b6;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+
+  /* Terminal Chrome */
+  --terminal-bg: #1a1a2e;
+  --terminal-content-bg: #0d1117;
+  --terminal-url-bg: rgba(255, 255, 255, 0.05);
+  --screenshot-bg: #f5f6fa;
+  --arrow-bg: rgba(0, 0, 0, 0.5);
+  --arrow-bg-hover: rgba(0, 0, 0, 0.7);
+  --arrow-text: #ffffff;
+
+  /* Progress bar tracks */
+  --track-bg: rgba(255, 255, 255, 0.05);
+
+  /* Shadows */
+  --shadow-heavy: rgba(0, 0, 0, 0.6);
+  --shadow-medium: rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+.light {
+  /* Light Theme */
+  --bg-primary: #f8f9fc;
+  --bg-secondary: #eef0f5;
+  --bg-elevated: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-hover: rgba(255, 255, 255, 0.9);
+
+  /* Text Hierarchy */
+  --text-primary: #0f1729;
+  --text-secondary: #4a5568;
+  --text-tertiary: #9ca3b8;
+
+  /* Accent Colors (slightly deeper for contrast on light) */
+  --accent-orange: #d35400;
+  --accent-orange-dim: rgba(211, 84, 0, 0.1);
+  --accent-teal: #219a52;
+  --accent-teal-dim: rgba(33, 154, 82, 0.1);
+  --accent-blue: #2980b9;
+  --accent-blue-dim: rgba(41, 128, 185, 0.1);
+  --accent-red: #c0392b;
+  --accent-red-dim: rgba(192, 57, 43, 0.1);
+  --accent-purple: #8e44ad;
+
+  /* Borders */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.15);
+
+  /* Terminal Chrome */
+  --terminal-bg: #e2e4ea;
+  --terminal-content-bg: #1e1e2e;
+  --terminal-url-bg: rgba(0, 0, 0, 0.06);
+  --screenshot-bg: #f5f6fa;
+  --arrow-bg: rgba(0, 0, 0, 0.4);
+  --arrow-bg-hover: rgba(0, 0, 0, 0.6);
+  --arrow-text: #ffffff;
+
+  /* Progress bar tracks */
+  --track-bg: rgba(0, 0, 0, 0.06);
+
+  /* Shadows */
+  --shadow-heavy: rgba(0, 0, 0, 0.15);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-glass: var(--bg-glass);
+  --color-bg-glass-hover: var(--bg-glass-hover);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-dim: var(--accent-orange-dim);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-teal-dim: var(--accent-teal-dim);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-dim: var(--accent-blue-dim);
+  --color-accent-red: var(--accent-red);
+  --color-accent-red-dim: var(--accent-red-dim);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-hover: var(--border-hover);
+
+  --color-terminal-bg: var(--terminal-bg);
+  --color-terminal-content-bg: var(--terminal-content-bg);
+  --color-terminal-url-bg: var(--terminal-url-bg);
+  --color-screenshot-bg: var(--screenshot-bg);
+  --color-arrow-bg: var(--arrow-bg);
+  --color-arrow-bg-hover: var(--arrow-bg-hover);
+  --color-arrow-text: var(--arrow-text);
+  --color-track-bg: var(--track-bg);
+  --color-shadow-heavy: var(--shadow-heavy);
+  --color-shadow-medium: var(--shadow-medium);
+
+  --font-sans: var(--font-outfit);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Smooth theme transition */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dot Grid Background Pattern */
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    var(--text-tertiary) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 24px 24px;
+  opacity: 0.3;
+}
+
+/* Glass morphism base */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Gradient text utility */
+.gradient-text-orange-teal {
+  background: linear-gradient(135deg, var(--accent-orange), var(--accent-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient border */
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.gradient-border-animated {
+  --gradient-angle: 0deg;
+  border-image: conic-gradient(
+      from var(--gradient-angle),
+      var(--accent-orange),
+      var(--accent-teal),
+      var(--accent-blue),
+      var(--accent-orange)
+    )
+    1;
+  animation: rotate-gradient 4s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Cursor blink */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Selection */
+::selection {
+  background: rgba(46, 204, 113, 0.3);
+  color: var(--text-primary);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
