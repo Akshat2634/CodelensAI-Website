@@ -4,7 +4,7 @@ import { outfit, jetbrainsMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
-const siteUrl = "https://codelensai.dev";
+const siteUrl = "https://codelensai-dev.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
