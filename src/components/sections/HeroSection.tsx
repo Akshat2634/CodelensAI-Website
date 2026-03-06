@@ -7,6 +7,8 @@ import { Container } from "@/components/ui/Container";
 import { GridBackground } from "@/components/ui/GridBackground";
 import { TerminalWindow } from "@/components/ui/TerminalWindow";
 import { TypewriterText } from "@/components/ui/TypewriterText";
+import { CopyButton } from "@/components/ui/CopyButton";
+import { useNpmStats } from "@/lib/useNpmStats";
 import { SITE, STATS } from "@/lib/constants";
 
 const terminalLines = [
@@ -29,8 +31,8 @@ const terminalLines = [
   },
 ];
 
-const trustItems = [
-  `${STATS.weeklyDownloads} weekly downloads`,
+const staticTrustItems = [
+  "Free Forever",
   `${STATS.license} License`,
   "Zero Config",
   "Privacy First",
@@ -46,8 +48,10 @@ const item = {
 };
 
 export function HeroSection() {
+  const { downloads } = useNpmStats();
   const [typingDone, setTypingDone] = useState(false);
   const [visibleLines, setVisibleLines] = useState(0);
+  const trustItems = [`${downloads.toLocaleString()}+ weekly downloads`, ...staticTrustItems];
 
   const handleTypingComplete = useCallback(() => {
     setTypingDone(true);
@@ -147,6 +151,18 @@ export function HeroSection() {
               <Github className="h-4 w-4" />
               View on GitHub
             </a>
+          </motion.div>
+
+          {/* Quick copy command */}
+          <motion.div
+            variants={item}
+            className="mt-6 flex items-center gap-3 rounded-xl border border-border-subtle bg-bg-glass px-4 py-2.5 backdrop-blur-xl"
+          >
+            <span className="font-mono text-sm text-accent-teal">$</span>
+            <code className="font-mono text-sm text-text-primary">
+              npx claude-roi
+            </code>
+            <CopyButton text="npx claude-roi" />
           </motion.div>
 
           {/* Trust bar */}

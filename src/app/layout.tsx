@@ -121,7 +121,7 @@ const jsonLd = {
   license: "https://opensource.org/licenses/MIT",
   codeRepository: "https://github.com/Akshat2634/Codelens-AI",
   downloadUrl: "https://www.npmjs.com/package/claude-roi",
-  softwareVersion: "0.5.0",
+  softwareVersion: "0.7.2",
 };
 
 export default function RootLayout({
