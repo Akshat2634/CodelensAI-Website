@@ -3,32 +3,35 @@
 import { motion } from "framer-motion";
 import { Quote, Download, Package, Scale, Box } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { useNpmStats } from "@/lib/useNpmStats";
 import { SITE, STATS } from "@/lib/constants";
 
-const stats = [
-  {
-    icon: Download,
-    value: STATS.weeklyDownloads,
-    label: "Weekly Downloads",
-  },
-  {
-    icon: Package,
-    value: `v${STATS.version}`,
-    label: "Current Version",
-  },
-  {
-    icon: Scale,
-    value: STATS.license,
-    label: "Open Source License",
-  },
-  {
-    icon: Box,
-    value: `${STATS.dependencies}`,
-    label: "Dependencies",
-  },
-];
-
 export function SocialProof() {
+  const { version, downloads } = useNpmStats();
+
+  const stats = [
+    {
+      icon: Download,
+      render: () => <AnimatedCounter end={downloads} suffix="+" />,
+      label: "Weekly Downloads",
+    },
+    {
+      icon: Package,
+      render: () => <>v{version}</>,
+      label: "Current Version",
+    },
+    {
+      icon: Scale,
+      render: () => <>{STATS.license}</>,
+      label: "Open Source License",
+    },
+    {
+      icon: Box,
+      render: () => <AnimatedCounter end={STATS.dependencies} />,
+      label: "Dependencies",
+    },
+  ];
   return (
     <section id="testimonials" className="relative pt-8 pb-14 sm:pt-10 sm:pb-20">
       <Container>
@@ -72,7 +75,7 @@ export function SocialProof() {
             >
               <stat.icon className="mx-auto mb-3 h-5 w-5 text-text-tertiary" />
               <div className="font-mono text-xl font-bold text-text-primary">
-                {stat.value}
+                {stat.render()}
               </div>
               <div className="mt-1 text-xs text-text-tertiary">
                 {stat.label}

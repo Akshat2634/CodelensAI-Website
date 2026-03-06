@@ -11,7 +11,7 @@ export const SITE = {
 
 export const STATS = {
   weeklyDownloads: "1,072+",
-  version: "0.5.0",
+  version: "0.7.2",
   license: "MIT",
   dependencies: 3,
   unpackedSize: "163 kB",
@@ -72,6 +72,13 @@ export const FEATURES = [
     description:
       "Track spending over time: today, this week, this month, all time. Spot trends and control your budget.",
     accent: "orange" as const,
+    size: "large" as const,
+  },
+  {
+    title: "Agent Autonomy",
+    description:
+      "Measure how independently Claude Code operates without hand-holding. See how often it self-corrects, how many tools it leverages, and how efficiently it ships commits.",
+    accent: "teal" as const,
     size: "large" as const,
   },
   {

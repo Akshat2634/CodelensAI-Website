@@ -12,11 +12,14 @@ import {
   LineChart,
   Zap,
   Shield,
+  Bot,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ROIGradeBadge } from "@/components/ui/ROIGradeBadge";
+import { CopyButton } from "@/components/ui/CopyButton";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 import { FEATURES } from "@/lib/constants";
 
 const icons = [
@@ -28,6 +31,7 @@ const icons = [
   Clock,
   AlertTriangle,
   LineChart,
+  Bot,
   Zap,
   Shield,
 ];
@@ -264,10 +268,13 @@ function TerminalMini() {
   return (
     <div className="dark mt-4 overflow-hidden rounded-lg border border-white/[0.06] bg-[#1a1a2e]">
       {/* Window chrome */}
-      <div className="flex items-center gap-1.5 px-3 py-2 bg-white/[0.03]">
-        <div className="h-[7px] w-[7px] rounded-full bg-[#ff5f57]" />
-        <div className="h-[7px] w-[7px] rounded-full bg-[#febc2e]" />
-        <div className="h-[7px] w-[7px] rounded-full bg-[#28c840]" />
+      <div className="flex items-center justify-between px-3 py-2 bg-white/[0.03]">
+        <div className="flex items-center gap-1.5">
+          <div className="h-[7px] w-[7px] rounded-full bg-[#ff5f57]" />
+          <div className="h-[7px] w-[7px] rounded-full bg-[#febc2e]" />
+          <div className="h-[7px] w-[7px] rounded-full bg-[#28c840]" />
+        </div>
+        <CopyButton text="npx claude-roi" className="!px-1.5 !py-0.5 !text-[10px] !bg-transparent" />
       </div>
       {/* Content */}
       <div className="bg-[#0d1117] px-3 py-2.5">
@@ -277,9 +284,65 @@ function TerminalMini() {
             npx claude-roi
           </span>
         </div>
-        <div className="mt-1 font-mono text-[10px] text-[#4a5067]">
-          ✓ Dashboard ready
-        </div>
+      </div>
+    </div>
+  );
+}
+
+function AutonomyViz() {
+  const metrics = [
+    { label: "Autopilot Ratio", value: "4.2x", pct: 84, color: "bg-accent-teal" },
+    { label: "Self-Heal Score", value: "78%", pct: 78, color: "bg-accent-blue" },
+    { label: "Toolbelt Coverage", value: "65%", pct: 65, color: "bg-accent-orange" },
+    { label: "Commit Velocity", value: "12", pct: 60, color: "bg-accent-teal" },
+  ];
+  return (
+    <div className="mt-4 flex items-center gap-5">
+      {/* Grade ring */}
+      <div className="relative flex h-[72px] w-[72px] shrink-0 items-center justify-center">
+        <svg width="72" height="72" className="absolute -rotate-90">
+          <circle
+            cx="36" cy="36" r="30"
+            fill="none"
+            stroke="var(--border-subtle)"
+            strokeWidth="4"
+          />
+          <motion.circle
+            cx="36" cy="36" r="30"
+            fill="none"
+            stroke="var(--accent-teal)"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeDasharray={2 * Math.PI * 30}
+            initial={{ strokeDashoffset: 2 * Math.PI * 30 }}
+            whileInView={{ strokeDashoffset: 2 * Math.PI * 30 * 0.12 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+          />
+        </svg>
+        <span className="font-mono text-2xl font-bold text-accent-teal">A</span>
+      </div>
+      {/* Metric bars */}
+      <div className="flex-1 space-y-2.5">
+        {metrics.map((m) => (
+          <div key={m.label} className="flex items-center gap-2">
+            <span className="w-24 truncate font-mono text-[10px] text-text-tertiary">
+              {m.label}
+            </span>
+            <div className="flex-1 h-1.5 rounded-full bg-track-bg overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${m.pct}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className={`h-full rounded-full ${m.color}`}
+              />
+            </div>
+            <span className="w-8 text-right font-mono text-[11px] font-medium text-text-primary">
+              {m.value}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -307,6 +370,7 @@ const visualizations = [
   HeatmapMini,
   OrphanedCount,
   SparklineMini,
+  AutonomyViz,
   TerminalMini,
   ShieldIcon,
 ];
@@ -320,12 +384,13 @@ const gridClasses = [
   "sm:col-span-1",  // 1 Cost per Commit            row1: +1=3
   "sm:col-span-1",  // 2 Line Survival              row2: 1
   "sm:col-span-1",  // 3 Token Analytics             row2: +1=2
-  "sm:col-span-1",  // 4 Model Comparison → small    row2: +1=3
+  "sm:col-span-1",  // 4 Model Comparison            row2: +1=3
   "sm:col-span-1",  // 5 Heatmap                    row3: 1
   "sm:col-span-1",  // 6 Session Analysis            row3: +1=2
-  "sm:col-span-1",  // 7 Cost Breakdown → small      row3: +1=3
-  "sm:col-span-1",  // 8 Zero Config                row4: 1
-  "sm:col-span-2",  // 9 Privacy First (wide)       row4: +2=3
+  "sm:col-span-1",  // 7 Cost Breakdown              row3: +1=3
+  "sm:col-span-2",  // 8 Agent Autonomy (NEW)       row4: 2
+  "sm:col-span-1",  // 9 Zero Config                row4: +1=3
+  "sm:col-span-3",  // 10 Privacy First (full)      row5: 3
 ];
 
 export function FeaturesGrid() {
@@ -373,6 +438,11 @@ export function FeaturesGrid() {
                     <div>
                       <h3 className="font-mono text-sm font-semibold text-text-primary">
                         {feature.title}
+                        {feature.title === "Agent Autonomy" && (
+                          <span className="ml-2 inline-block rounded-full bg-accent-teal px-2 py-0.5 align-middle font-sans text-[10px] font-bold uppercase tracking-wider text-white">
+                            New
+                          </span>
+                        )}
                       </h3>
                       <p className="mt-1 text-xs leading-relaxed text-text-secondary">
                         {feature.description}

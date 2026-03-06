@@ -45,7 +45,9 @@ export function AnimatedCounter({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {value.toFixed(decimals)}
+      {decimals > 0
+        ? value.toFixed(decimals)
+        : Math.round(value).toLocaleString()}
       {suffix}
     </span>
   );
