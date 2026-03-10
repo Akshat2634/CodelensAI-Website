@@ -27,6 +27,11 @@ const slides = [
     alt: "CodelensAI Dashboard — Session Analysis and Productivity Heatmap",
     label: "Session Insights",
   },
+  {
+    src: "/screenshots/stats4.png",
+    alt: "CodelensAI Dashboard — Agent Autonomy, Line Survival Rate, and Session Details",
+    label: "Agent Autonomy",
+  },
 ];
 
 const slideVariants = {

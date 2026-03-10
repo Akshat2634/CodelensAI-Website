@@ -274,14 +274,14 @@ function TerminalMini() {
           <div className="h-[7px] w-[7px] rounded-full bg-[#febc2e]" />
           <div className="h-[7px] w-[7px] rounded-full bg-[#28c840]" />
         </div>
-        <CopyButton text="npx claude-roi" className="!px-1.5 !py-0.5 !text-[10px] !bg-transparent" />
+        <CopyButton text="npx codelens-ai" className="!px-1.5 !py-0.5 !text-[10px] !bg-transparent" />
       </div>
       {/* Content */}
       <div className="bg-[#0d1117] px-3 py-2.5">
         <div className="flex items-center gap-2">
           <span className="font-mono text-xs text-[#2ecc71]">$</span>
           <span className="font-mono text-xs text-[#f0f2f5]">
-            npx claude-roi
+            npx codelens-ai
           </span>
         </div>
       </div>

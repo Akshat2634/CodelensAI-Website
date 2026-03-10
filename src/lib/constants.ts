@@ -2,16 +2,16 @@ export const SITE = {
   name: "CodelensAI",
   tagline: "Agent Productivity-to-Cost Correlator",
   description:
-    "Measure your AI coding ROI. CodelensAI correlates Claude Code token spend with actual git output. One command: npx claude-roi.",
+    "Measure your AI coding ROI. CodelensAI correlates Claude Code token spend with actual git output. One command: npx codelens-ai.",
   url: "https://codelensai.dev",
   github: "https://github.com/Akshat2634/Codelens-AI",
-  npm: "https://www.npmjs.com/package/claude-roi",
+  npm: "https://www.npmjs.com/package/codelens-ai",
   author: "Akshat Sahu",
 };
 
 export const STATS = {
-  weeklyDownloads: "1,072+",
-  version: "0.7.2",
+  weeklyDownloads: "1,500+",
+  version: "0.8.5",
   license: "MIT",
   dependencies: 3,
   unpackedSize: "163 kB",
@@ -84,7 +84,7 @@ export const FEATURES = [
   {
     title: "Zero Config",
     description:
-      "One command. No setup. No API keys. Just run npx claude-roi in any git repo where you've used Claude Code.",
+      "One command. No setup. No API keys. Just run npx codelens-ai in any git repo where you've used Claude Code.",
     accent: "teal" as const,
     size: "small" as const,
   },
@@ -102,7 +102,7 @@ export const STEPS = [
     number: "01",
     title: "Install & Run",
     description:
-      "Run npx claude-roi in any git repository where you've used Claude Code. No config files, no API keys, no setup required.",
+      "Run npx codelens-ai in any git repository where you've used Claude Code. No config files, no API keys, no setup required.",
   },
   {
     number: "02",
@@ -119,10 +119,10 @@ export const STEPS = [
 ];
 
 export const INSTALL_COMMANDS = {
-  npx: "npx claude-roi",
-  npm: "npm install -g claude-roi",
-  pnpm: "pnpm add -g claude-roi",
-  yarn: "yarn global add claude-roi",
+  npx: "npx codelens-ai",
+  npm: "npm install -g codelens-ai",
+  pnpm: "pnpm add -g codelens-ai",
+  yarn: "yarn global add codelens-ai",
 };
 
 export const CLI_OPTIONS = [

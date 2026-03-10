@@ -77,7 +77,7 @@ export function Navbar() {
               href="#install"
               className="flex items-center gap-1.5 rounded-lg bg-accent-teal px-4 py-1.5 font-mono text-xs font-medium text-bg-primary transition-all hover:brightness-110"
             >
-              npx claude-roi
+              npx codelens-ai
               <ArrowRight className="h-3 w-3" />
             </a>
           </div>
@@ -133,7 +133,7 @@ export function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-1.5 rounded-lg bg-accent-teal px-4 py-2 font-mono text-xs font-medium text-bg-primary"
                 >
-                  npx claude-roi
+                  npx codelens-ai
                   <ArrowRight className="h-3 w-3" />
                 </a>
               </div>

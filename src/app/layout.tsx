@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | CodelensAI",
   },
   description:
-    "Measure your AI coding ROI. CodelensAI correlates Claude Code token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx claude-roi.",
+    "Measure your AI coding ROI. CodelensAI correlates Claude Code token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx codelens-ai.",
   keywords: [
     "Claude Code",
     "Claude Code ROI",
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     "developer tools",
     "productivity dashboard",
     "cost tracking",
-    "claude-roi",
-    "npx claude-roi",
+    "codelens-ai",
+    "npx codelens-ai",
     "AI spend tracker",
     "code cost analysis",
     "Claude token usage",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "CodelensAI — Are you getting ROI from Claude Code?",
     description:
-      "The open-source CLI dashboard that ties your Claude Code token spend to actual git output. One command: npx claude-roi.",
+      "The open-source CLI dashboard that ties your Claude Code token spend to actual git output. One command: npx codelens-ai.",
     siteName: "CodelensAI",
     images: [
       {
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CodelensAI — ROI Dashboard for Claude Code",
     description:
-      "One command to measure your AI coding ROI: npx claude-roi",
+      "One command to measure your AI coding ROI: npx codelens-ai",
     images: ["/og-image.png"],
   },
   robots: {
@@ -120,8 +120,8 @@ const jsonLd = {
   },
   license: "https://opensource.org/licenses/MIT",
   codeRepository: "https://github.com/Akshat2634/Codelens-AI",
-  downloadUrl: "https://www.npmjs.com/package/claude-roi",
-  softwareVersion: "0.7.2",
+  downloadUrl: "https://www.npmjs.com/package/codelens-ai",
+  softwareVersion: "0.8.5",
 };
 
 export default function RootLayout({
