@@ -68,7 +68,7 @@ export function HowItWorks() {
                 <GlassCard hover className="relative h-full p-6 sm:p-8">
                   {/* Step number */}
                   <div
-                    className={`mb-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-current ${colors.text}`}
+                    className={`glow-ring mb-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-current ${colors.text}`}
                   >
                     <span className="font-mono text-sm font-bold">
                       {step.number}

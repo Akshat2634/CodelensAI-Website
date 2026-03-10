@@ -425,6 +425,7 @@ export function FeaturesGrid() {
                 <GlassCard
                   accent={feature.accent}
                   hover
+                  spotlight
                   className="h-full p-5 sm:p-6"
                 >
                   <div className="flex items-start gap-3">

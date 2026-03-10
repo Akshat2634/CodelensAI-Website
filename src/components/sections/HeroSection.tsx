@@ -8,6 +8,8 @@ import { GridBackground } from "@/components/ui/GridBackground";
 import { TerminalWindow } from "@/components/ui/TerminalWindow";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { Marquee } from "@/components/ui/Marquee";
+import { TextReveal } from "@/components/ui/TextReveal";
 import { useNpmStats } from "@/lib/useNpmStats";
 import { SITE, STATS } from "@/lib/constants";
 
@@ -76,14 +78,15 @@ export function HeroSection() {
           className="flex flex-col items-center text-center"
         >
           {/* Headline */}
-          <motion.h1
-            variants={item}
-            className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
-          >
-            <span className="text-text-primary">Stop guessing.</span>
+          <h1 className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+            <span className="text-text-primary">
+              <TextReveal text="Stop guessing." />
+            </span>
             <br />
-            <span className="gradient-text-orange-teal">Start measuring.</span>
-          </motion.h1>
+            <span className="gradient-text-orange-teal">
+              <TextReveal text="Start measuring." />
+            </span>
+          </h1>
 
           {/* Subheadline */}
           <motion.p
@@ -165,24 +168,19 @@ export function HeroSection() {
             <CopyButton text="npx codelens-ai" />
           </motion.div>
 
-          {/* Trust bar */}
-          <motion.div
-            variants={item}
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
-          >
-            {trustItems.map((text, i) => (
-              <span
-                key={i}
-                className="font-mono text-xs text-text-tertiary"
-              >
-                {i > 0 && (
-                  <span className="mr-6 hidden sm:inline text-text-tertiary/40">
-                    ·
-                  </span>
-                )}
-                {text}
-              </span>
-            ))}
+          {/* Trust bar marquee */}
+          <motion.div variants={item} className="mt-8 w-full max-w-2xl">
+            <Marquee speed={25}>
+              {trustItems.map((text, i) => (
+                <span
+                  key={i}
+                  className="mx-6 font-mono text-xs text-text-tertiary whitespace-nowrap"
+                >
+                  <span className="mr-6 text-text-tertiary/40">&#x2022;</span>
+                  {text}
+                </span>
+              ))}
+            </Marquee>
           </motion.div>
         </motion.div>
       </Container>

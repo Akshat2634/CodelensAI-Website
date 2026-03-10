@@ -32,7 +32,10 @@ export function OpenSourceCTA() {
 
           <div className="relative">
             <h2 className="text-2xl font-bold text-text-primary sm:text-3xl lg:text-4xl">
-              CodelensAI is free and open source.
+              CodelensAI is{" "}
+              <span className="gradient-text-teal-orange">
+                free and open source.
+              </span>
             </h2>
             <p className="mt-3 text-base text-text-secondary sm:text-lg">
               Built by developers, for developers.

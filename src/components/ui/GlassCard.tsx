@@ -1,3 +1,6 @@
+"use client";
+
+import { useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 type AccentColor = "orange" | "teal" | "blue" | "red" | "none";
@@ -24,14 +27,32 @@ export function GlassCard({
   className,
   accent = "none",
   hover = false,
+  spotlight = false,
 }: {
   children: React.ReactNode;
   className?: string;
   accent?: AccentColor;
   hover?: boolean;
+  spotlight?: boolean;
 }) {
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      e.currentTarget.style.setProperty(
+        "--mouse-x",
+        `${e.clientX - rect.left}px`
+      );
+      e.currentTarget.style.setProperty(
+        "--mouse-y",
+        `${e.clientY - rect.top}px`
+      );
+    },
+    []
+  );
+
   return (
     <div
+      onMouseMove={spotlight ? handleMouseMove : undefined}
       className={cn(
         "relative overflow-hidden rounded-2xl border border-border-subtle bg-bg-glass backdrop-blur-xl",
         accent !== "none" && "before:content-['']",
@@ -39,6 +60,7 @@ export function GlassCard({
         hover &&
           "transition-all duration-300 hover:border-border-hover hover:bg-bg-glass-hover hover:-translate-y-0.5",
         hover && accentGlowStyles[accent],
+        spotlight && "glass-spotlight",
         className
       )}
     >

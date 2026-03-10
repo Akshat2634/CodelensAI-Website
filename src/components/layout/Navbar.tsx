@@ -54,9 +54,10 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-sm text-text-secondary transition-colors hover:text-text-primary"
+                className="group relative text-sm text-text-secondary transition-colors hover:text-text-primary"
               >
                 {link.label}
+                <span className="absolute -bottom-0.5 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-accent-teal transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </a>
             ))}
           </div>
