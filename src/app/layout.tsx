@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | CodelensAI",
   },
   description:
-    "Measure your AI coding ROI. CodelensAI (formerly claude-roi) correlates AI agent token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx codelens-ai.",
+    "Measure your AI coding ROI. CodelensAI correlates AI agent token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx codelens-ai.",
   keywords: [
     "AI coding agent",
     "AI agent ROI",
@@ -113,7 +113,7 @@ const jsonLd = {
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux, Windows",
   description:
-    "Open-source CLI dashboard (formerly claude-roi) that measures your AI coding ROI by correlating AI agent token spend with actual git output. Supports Claude Code, Codex, Cursor, and more.",
+    "Open-source CLI dashboard that measures your AI coding ROI by correlating AI agent token spend with actual git output. Supports Claude Code, Codex, Cursor, and more.",
   url: siteUrl,
   author: {
     "@type": "Person",
