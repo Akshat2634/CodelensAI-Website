@@ -31,7 +31,7 @@ export function TerminalWindow({
       </div>
 
       {/* Content — force dark context so text stays visible on dark bg */}
-      <div className="dark bg-terminal-content-bg px-5 py-4 font-mono text-sm leading-relaxed">
+      <div className="dark bg-terminal-content-bg px-3 py-3 font-mono text-sm leading-relaxed overflow-x-auto sm:px-5 sm:py-4">
         {children}
       </div>
     </div>
