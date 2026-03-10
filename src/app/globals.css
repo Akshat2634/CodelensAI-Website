@@ -278,6 +278,74 @@ html {
   color: var(--text-primary);
 }
 
+/* Gradient text variants */
+.gradient-text-blue-teal {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-teal-orange {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Glass spotlight effect */
+.glass-spotlight {
+  position: relative;
+}
+
+.glass-spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(230, 126, 34, 0.06),
+    transparent 40%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass-spotlight:hover::after {
+  opacity: 1;
+}
+
+/* Glow pulse for step circles */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 6px 2px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 18px 6px currentColor;
+  }
+}
+
+.glow-ring {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
