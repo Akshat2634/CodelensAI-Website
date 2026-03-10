@@ -27,18 +27,20 @@ const wordVariants = {
 export function TextReveal({
   text,
   className,
+  immediate = false,
 }: {
   text: string;
   className?: string;
+  immediate?: boolean;
 }) {
   const words = text.split(" ");
 
   return (
     <motion.span
       variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      {...(immediate
+        ? {}
+        : { initial: "hidden", whileInView: "visible", viewport: { once: true, margin: "-60px" } })}
       className={cn("inline", className)}
       aria-label={text}
     >

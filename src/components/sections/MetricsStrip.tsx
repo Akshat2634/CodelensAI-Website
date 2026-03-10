@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { cn } from "@/lib/utils";
 
 const metrics = [
   {
@@ -61,7 +62,7 @@ export function MetricsStrip() {
           {metrics.map((m, i) => (
             <div
               key={i}
-              className="text-center"
+              className={cn("text-center", i === metrics.length - 1 && "col-span-2 sm:col-span-1")}
             >
               <div className={`font-mono text-2xl font-bold sm:text-3xl ${m.color}`}>
                 <AnimatedCounter

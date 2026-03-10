@@ -297,7 +297,7 @@ function AutonomyViz() {
     { label: "Commit Velocity", value: "12", pct: 60, color: "bg-accent-teal" },
   ];
   return (
-    <div className="mt-4 flex items-center gap-5">
+    <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:gap-5">
       {/* Grade ring */}
       <div className="relative flex h-[72px] w-[72px] shrink-0 items-center justify-center">
         <svg width="72" height="72" className="absolute -rotate-90">
@@ -380,17 +380,17 @@ const visualizations = [
 //   Model Comparison, Productivity Heatmap, Session Analysis, Cost Breakdown,
 //   Zero Config, Privacy First
 const gridClasses = [
-  "sm:col-span-2",  // 0 ROI Grade (large)         row1: 2
-  "sm:col-span-1",  // 1 Cost per Commit            row1: +1=3
-  "sm:col-span-1",  // 2 Line Survival              row2: 1
-  "sm:col-span-1",  // 3 Token Analytics             row2: +1=2
-  "sm:col-span-1",  // 4 Model Comparison            row2: +1=3
-  "sm:col-span-1",  // 5 Heatmap                    row3: 1
-  "sm:col-span-1",  // 6 Session Analysis            row3: +1=2
-  "sm:col-span-1",  // 7 Cost Breakdown              row3: +1=3
-  "sm:col-span-2",  // 8 Agent Autonomy (NEW)       row4: 2
-  "sm:col-span-1",  // 9 Zero Config                row4: +1=3
-  "sm:col-span-3",  // 10 Privacy First (full)      row5: 3
+  "md:col-span-2",  // 0 ROI Grade (large)         row1: 2
+  "md:col-span-1",  // 1 Cost per Commit            row1: +1=3
+  "md:col-span-1",  // 2 Line Survival              row2: 1
+  "md:col-span-1",  // 3 Token Analytics             row2: +1=2
+  "md:col-span-1",  // 4 Model Comparison            row2: +1=3
+  "md:col-span-1",  // 5 Heatmap                    row3: 1
+  "md:col-span-1",  // 6 Session Analysis            row3: +1=2
+  "md:col-span-1",  // 7 Cost Breakdown              row3: +1=3
+  "md:col-span-2",  // 8 Agent Autonomy (NEW)       row4: 2
+  "md:col-span-1",  // 9 Zero Config                row4: +1=3
+  "md:col-span-3",  // 10 Privacy First (full)      row5: 3
 ];
 
 export function FeaturesGrid() {
@@ -404,7 +404,7 @@ export function FeaturesGrid() {
           accent="orange"
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
           {FEATURES.map((feature, i) => {
             const Icon = icons[i];
             const Viz = visualizations[i];

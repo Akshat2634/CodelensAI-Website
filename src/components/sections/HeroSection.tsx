@@ -67,7 +67,7 @@ export function HeroSection() {
     <section className="relative flex min-h-[100dvh] items-center overflow-hidden">
       <GridBackground className="absolute inset-0" showOrbs />
 
-      <Container className="relative z-10 py-24 sm:py-28">
+      <Container className="relative z-10 py-16 sm:py-28">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -80,11 +80,11 @@ export function HeroSection() {
           {/* Headline */}
           <h1 className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
             <span className="text-text-primary">
-              <TextReveal text="Stop guessing." />
+              <TextReveal text="Stop guessing." immediate />
             </span>
             <br />
             <span className="gradient-text-orange-teal">
-              <TextReveal text="Start measuring." />
+              <TextReveal text="Start measuring." immediate />
             </span>
           </h1>
 
@@ -121,7 +121,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, x: -5 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3 }}
-                        className={`text-[13px] ${line.color}`}
+                        className={`text-[11px] sm:text-[13px] ${line.color}`}
                       >
                         {i === terminalLines.length - 1 ? (
                           <span className="font-semibold">{line.text}</span>
