@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | CodelensAI",
   },
   description:
-    "Measure your AI coding ROI. CodelensAI correlates AI agent token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx codelens-ai.",
+    "Measure your AI coding ROI. CodelensAI (formerly claude-roi) correlates AI agent token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx codelens-ai.",
   keywords: [
     "AI coding agent",
     "AI agent ROI",
@@ -25,9 +25,15 @@ export const metadata: Metadata = {
     "cost tracking",
     "codelens-ai",
     "npx codelens-ai",
+    "claude-roi",
+    "npx claude-roi",
+    "claude-roi alternative",
+    "claude-roi renamed",
     "AI spend tracker",
     "code cost analysis",
     "Claude token usage",
+    "Codex ROI",
+    "Cursor ROI",
     "open source CLI",
     "developer productivity",
   ],
@@ -103,11 +109,11 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "CodelensAI",
-  alternateName: "claude-roi",
+  alternateName: ["claude-roi", "npx claude-roi", "npx codelens-ai"],
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux, Windows",
   description:
-    "Open-source CLI dashboard that measures your AI coding ROI by correlating AI agent token spend with actual git output.",
+    "Open-source CLI dashboard (formerly claude-roi) that measures your AI coding ROI by correlating AI agent token spend with actual git output. Supports Claude Code, Codex, Cursor, and more.",
   url: siteUrl,
   author: {
     "@type": "Person",

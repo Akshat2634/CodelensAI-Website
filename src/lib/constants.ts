@@ -2,7 +2,7 @@ export const SITE = {
   name: "CodelensAI",
   tagline: "Agent Productivity-to-Cost Correlator",
   description:
-    "Measure your AI coding ROI. CodelensAI correlates AI agent token spend with actual git output. One command: npx codelens-ai.",
+    "Measure your AI coding ROI. CodelensAI (formerly claude-roi) correlates AI agent token spend with actual git output. One command: npx codelens-ai.",
   url: "https://codelensai.dev",
   github: "https://github.com/Akshat2634/Codelens-AI",
   npm: "https://www.npmjs.com/package/codelens-ai",
