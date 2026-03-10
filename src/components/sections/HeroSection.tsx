@@ -93,7 +93,7 @@ export function HeroSection() {
             variants={item}
             className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
           >
-            The open-source ROI dashboard that ties your Claude Code token spend
+            The open-source ROI dashboard that ties your AI agent token spend
             to actual git output.
           </motion.p>
 

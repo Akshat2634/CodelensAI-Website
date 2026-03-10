@@ -9,14 +9,15 @@ const siteUrl = "https://codelensai-dev.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "CodelensAI — ROI Dashboard for Claude Code",
+    default: "CodelensAI — ROI Dashboard for AI Coding Agents",
     template: "%s | CodelensAI",
   },
   description:
-    "Measure your AI coding ROI. CodelensAI correlates Claude Code token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx codelens-ai.",
+    "Measure your AI coding ROI. CodelensAI correlates AI agent token spend with actual git output. Get ROI grades, cost-per-commit, and line survival metrics. One command: npx codelens-ai.",
   keywords: [
+    "AI coding agent",
+    "AI agent ROI",
     "Claude Code",
-    "Claude Code ROI",
     "AI coding ROI",
     "token analytics",
     "developer tools",
@@ -24,9 +25,15 @@ export const metadata: Metadata = {
     "cost tracking",
     "codelens-ai",
     "npx codelens-ai",
+    "claude-roi",
+    "npx claude-roi",
+    "claude-roi alternative",
+    "claude-roi renamed",
     "AI spend tracker",
     "code cost analysis",
     "Claude token usage",
+    "Codex ROI",
+    "Cursor ROI",
     "open source CLI",
     "developer productivity",
   ],
@@ -39,23 +46,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "CodelensAI — Are you getting ROI from Claude Code?",
+    title: "CodelensAI — Are you getting ROI from your AI coding agent?",
     description:
-      "The open-source CLI dashboard that ties your Claude Code token spend to actual git output. One command: npx codelens-ai.",
+      "The open-source CLI dashboard that ties your AI agent token spend to actual git output. One command: npx codelens-ai.",
     siteName: "CodelensAI",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CodelensAI — ROI Dashboard for Claude Code. Stop guessing. Start measuring.",
+        alt: "CodelensAI — ROI Dashboard for AI Coding Agents. Stop guessing. Start measuring.",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CodelensAI — ROI Dashboard for Claude Code",
+    title: "CodelensAI — ROI Dashboard for AI Coding Agents",
     description:
       "One command to measure your AI coding ROI: npx codelens-ai",
     images: ["/og-image.png"],
@@ -102,11 +109,11 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "CodelensAI",
-  alternateName: "claude-roi",
+  alternateName: ["claude-roi", "npx claude-roi", "npx codelens-ai"],
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux, Windows",
   description:
-    "Open-source CLI dashboard that measures your AI coding ROI by correlating Claude Code token spend with actual git output.",
+    "Open-source CLI dashboard that measures your AI coding ROI by correlating AI agent token spend with actual git output. Supports Claude Code, Codex, Cursor, and more.",
   url: siteUrl,
   author: {
     "@type": "Person",

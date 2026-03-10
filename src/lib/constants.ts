@@ -2,7 +2,7 @@ export const SITE = {
   name: "CodelensAI",
   tagline: "Agent Productivity-to-Cost Correlator",
   description:
-    "Measure your AI coding ROI. CodelensAI correlates Claude Code token spend with actual git output. One command: npx codelens-ai.",
+    "Measure your AI coding ROI. CodelensAI correlates AI agent token spend with actual git output. One command: npx codelens-ai.",
   url: "https://codelensai.dev",
   github: "https://github.com/Akshat2634/Codelens-AI",
   npm: "https://www.npmjs.com/package/codelens-ai",
@@ -49,7 +49,7 @@ export const FEATURES = [
   {
     title: "Model Comparison",
     description:
-      "Compare cost and efficiency across Claude model families — Opus, Sonnet, and Haiku. Find the best model for your workflow.",
+      "Compare cost and efficiency across AI models — Claude, Codex, Cursor, and more. Find the best model for your workflow.",
     accent: "blue" as const,
     size: "large" as const,
   },
@@ -77,14 +77,14 @@ export const FEATURES = [
   {
     title: "Agent Autonomy",
     description:
-      "Measure how independently Claude Code operates without hand-holding. See how often it self-corrects, how many tools it leverages, and how efficiently it ships commits.",
+      "Measure how independently your AI agent operates without hand-holding. See how often it self-corrects, how many tools it leverages, and how efficiently it ships commits.",
     accent: "teal" as const,
     size: "large" as const,
   },
   {
     title: "Zero Config",
     description:
-      "One command. No setup. No API keys. Just run npx codelens-ai in any git repo where you've used Claude Code.",
+      "One command. No setup. No API keys. Just run npx codelens-ai in any git repo where you've used an AI coding agent.",
     accent: "teal" as const,
     size: "small" as const,
   },
@@ -102,13 +102,13 @@ export const STEPS = [
     number: "01",
     title: "Install & Run",
     description:
-      "Run npx codelens-ai in any git repository where you've used Claude Code. No config files, no API keys, no setup required.",
+      "Run npx codelens-ai in any git repository where you've used an AI coding agent. No config files, no API keys, no setup required.",
   },
   {
     number: "02",
     title: "Analyze",
     description:
-      "CodelensAI reads your local Claude Code session files and correlates them with your git history using file overlap and timestamps.",
+      "CodelensAI reads your local AI agent session files and correlates them with your git history using file overlap and timestamps.",
   },
   {
     number: "03",
