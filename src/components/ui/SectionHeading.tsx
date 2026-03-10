@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { TextReveal } from "./TextReveal";
 
-// SectionHeading only uses a subset of accents (no "red")
 type AccentColor = "orange" | "teal" | "blue";
 
 const labelColors: Record<AccentColor, string> = {

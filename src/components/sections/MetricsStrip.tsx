@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { cn } from "@/lib/utils";
-import { STATS } from "@/lib/constants";
 
 const metrics = [
   {
@@ -16,7 +14,7 @@ const metrics = [
     color: "text-accent-orange",
   },
   {
-    value: STATS.lineSurvivalRate,
+    value: 87,
     prefix: "",
     suffix: "%",
     decimals: 0,
@@ -63,7 +61,7 @@ export function MetricsStrip() {
           {metrics.map((m, i) => (
             <div
               key={i}
-              className={cn("text-center", i === metrics.length - 1 && "col-span-2 sm:col-span-1")}
+              className="text-center"
             >
               <div className={`font-mono text-2xl font-bold sm:text-3xl ${m.color}`}>
                 <AnimatedCounter
