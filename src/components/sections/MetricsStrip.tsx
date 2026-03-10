@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { cn } from "@/lib/utils";
+import { STATS } from "@/lib/constants";
 
 const metrics = [
   {
@@ -15,7 +16,7 @@ const metrics = [
     color: "text-accent-orange",
   },
   {
-    value: 87,
+    value: STATS.lineSurvivalRate,
     prefix: "",
     suffix: "%",
     decimals: 0,

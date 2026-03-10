@@ -80,11 +80,11 @@ export function HeroSection() {
           {/* Headline */}
           <h1 className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
             <span className="text-text-primary">
-              <TextReveal text="Stop guessing." immediate />
+              <TextReveal text="Stop guessing." controlled />
             </span>
             <br />
             <span className="gradient-text-orange-teal">
-              <TextReveal text="Start measuring." immediate />
+              <TextReveal text="Start measuring." controlled />
             </span>
           </h1>
 

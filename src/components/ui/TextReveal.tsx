@@ -27,18 +27,18 @@ const wordVariants = {
 export function TextReveal({
   text,
   className,
-  immediate = false,
+  controlled = false,
 }: {
   text: string;
   className?: string;
-  immediate?: boolean;
+  controlled?: boolean;
 }) {
   const words = text.split(" ");
 
   return (
     <motion.span
       variants={containerVariants}
-      {...(immediate
+      {...(controlled
         ? {}
         : { initial: "hidden", whileInView: "visible", viewport: { once: true, margin: "-60px" } })}
       className={cn("inline", className)}
