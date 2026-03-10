@@ -101,7 +101,7 @@ export function HeroSection() {
                 <span className="text-accent-teal">$</span>
                 <span className="ml-2">
                   <TypewriterText
-                    text="npx claude-roi"
+                    text="npx codelens-ai"
                     speed={60}
                     onComplete={handleTypingComplete}
                     className="text-text-primary"
@@ -160,9 +160,9 @@ export function HeroSection() {
           >
             <span className="font-mono text-sm text-accent-teal">$</span>
             <code className="font-mono text-sm text-text-primary">
-              npx claude-roi
+              npx codelens-ai
             </code>
-            <CopyButton text="npx claude-roi" />
+            <CopyButton text="npx codelens-ai" />
           </motion.div>
 
           {/* Trust bar */}

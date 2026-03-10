@@ -47,6 +47,11 @@ export function InstallSection() {
 
             {/* Glow */}
             <div className="mx-auto -mt-4 h-8 w-3/4 rounded-full bg-accent-teal/5 blur-2xl" />
+
+            {/* Backward-compat note */}
+            <p className="mt-4 text-center font-mono text-xs text-text-secondary tracking-wide">
+              Previously <span className="text-accent-teal">claude-roi</span> — same tool, new name
+            </p>
           </motion.div>
 
           {/* Alternative installs */}

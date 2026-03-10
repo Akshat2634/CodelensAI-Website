@@ -33,11 +33,11 @@
 
   <!-- Subheadline -->
   <text x="80" y="390" font-family="system-ui, sans-serif" font-size="24" fill="#8B92A5">The open-source ROI dashboard for Claude Code.</text>
-  <text x="80" y="425" font-family="system-ui, sans-serif" font-size="24" fill="#8B92A5">One command: npx claude-roi</text>
+  <text x="80" y="425" font-family="system-ui, sans-serif" font-size="24" fill="#8B92A5">One command: npx codelens-ai</text>
 
   <!-- Terminal pill -->
   <rect x="80" y="470" width="300" height="48" rx="12" fill="#121620" stroke="#2ECC71" stroke-width="1.5"/>
-  <text x="104" y="501" font-family="monospace" font-size="18" fill="#2ECC71">$ npx claude-roi</text>
+  <text x="104" y="501" font-family="monospace" font-size="18" fill="#2ECC71">$ npx codelens-ai</text>
 
   <!-- Stats -->
   <text x="440" y="501" font-family="monospace" font-size="16" fill="#4A5067">1,072+ downloads  ·  MIT License  ·  Zero Config</text>

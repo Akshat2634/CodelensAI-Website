@@ -37,6 +37,9 @@ export function Footer() {
               {SITE.tagline}. Measure your AI coding ROI with a single
               command.
             </p>
+            <p className="mt-2 font-mono text-[11px] text-text-tertiary">
+              Previously <span className="text-accent-teal">claude-roi</span> — same tool, new name
+            </p>
           </div>
 
           {/* Product */}

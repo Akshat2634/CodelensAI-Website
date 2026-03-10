@@ -10,19 +10,27 @@ export function useNpmStats() {
   );
 
   useEffect(() => {
-    fetch("https://registry.npmjs.org/claude-roi/latest")
+    fetch("https://registry.npmjs.org/codelens-ai/latest")
       .then((res) => res.json())
       .then((data) => {
         if (data.version) setVersion(data.version);
       })
       .catch(() => {});
 
-    fetch("https://api.npmjs.org/downloads/point/last-week/claude-roi")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.downloads) setDownloads(data.downloads);
-      })
-      .catch(() => {});
+    // Sum downloads from both packages (claude-roi was renamed to codelens-ai)
+    Promise.all([
+      fetch("https://api.npmjs.org/downloads/point/last-week/codelens-ai")
+        .then((res) => res.json())
+        .then((data) => data.downloads || 0)
+        .catch(() => 0),
+      fetch("https://api.npmjs.org/downloads/point/last-week/claude-roi")
+        .then((res) => res.json())
+        .then((data) => data.downloads || 0)
+        .catch(() => 0),
+    ]).then(([newPkg, oldPkg]) => {
+      const total = newPkg + oldPkg;
+      if (total >= 1000) setDownloads(total);
+    });
   }, []);
 
   return { version, downloads };
