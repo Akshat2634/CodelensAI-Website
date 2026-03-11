@@ -13,37 +13,24 @@ import {
   Zap,
   Shield,
   Bot,
+  type LucideIcon,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ROIGradeBadge } from "@/components/ui/ROIGradeBadge";
 import { CopyButton } from "@/components/ui/CopyButton";
-import { TypewriterText } from "@/components/ui/TypewriterText";
-import { FEATURES } from "@/lib/constants";
+import { AnimatedBarList } from "@/components/ui/AnimatedBarList";
+import { FEATURES, STATS, type Accent } from "@/lib/constants";
 
-const icons = [
-  DollarSign,
-  GitCommit,
-  TrendingUp,
-  BarChart3,
-  Layers,
-  Clock,
-  AlertTriangle,
-  LineChart,
-  Bot,
-  Zap,
-  Shield,
-];
-
-const accentTextColor: Record<string, string> = {
+const accentTextColor: Record<Accent, string> = {
   orange: "text-accent-orange",
   teal: "text-accent-teal",
   blue: "text-accent-blue",
   red: "text-accent-red",
 };
 
-const accentBg: Record<string, string> = {
+const accentBg: Record<Accent, string> = {
   orange: "bg-accent-orange-dim",
   teal: "bg-accent-teal-dim",
   blue: "bg-accent-blue-dim",
@@ -60,33 +47,16 @@ function ROIViz() {
 }
 
 function CostBars() {
-  const bars = [
-    { label: "Today", value: 65, amount: "$3.57" },
-    { label: "Week", value: 85, amount: "$24.80" },
-    { label: "Month", value: 45, amount: "$67.20" },
-  ];
   return (
-    <div className="mt-4 space-y-2.5">
-      {bars.map((bar) => (
-        <div key={bar.label} className="flex items-center gap-3">
-          <span className="w-12 font-mono text-[10px] text-text-tertiary">
-            {bar.label}
-          </span>
-          <div className="flex-1 h-2 rounded-full bg-track-bg overflow-hidden">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: `${bar.value}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-full rounded-full bg-accent-orange"
-            />
-          </div>
-          <span className="font-mono text-[11px] text-accent-orange">
-            {bar.amount}
-          </span>
-        </div>
-      ))}
-    </div>
+    <AnimatedBarList
+      items={[
+        { label: "Today", pct: 65, value: "$3.57" },
+        { label: "Week", pct: 85, value: "$24.80" },
+        { label: "Month", pct: 45, value: "$67.20" },
+      ]}
+      barColor="bg-accent-orange"
+      valueClassName="text-[11px] text-accent-orange"
+    />
   );
 }
 
@@ -112,11 +82,11 @@ function SurvivalRing() {
             strokeWidth="3"
             strokeLinecap="round"
             strokeDasharray={2 * Math.PI * 28}
-            strokeDashoffset={2 * Math.PI * 28 * 0.13}
+            strokeDashoffset={2 * Math.PI * 28 * (1 - STATS.lineSurvivalRate / 100)}
           />
         </svg>
         <span className="font-mono text-sm font-bold text-accent-teal">
-          87%
+          {STATS.lineSurvivalRate}%
         </span>
       </div>
       <span className="text-xs text-text-tertiary">
@@ -157,33 +127,18 @@ function TokenBars() {
 }
 
 function ModelBars() {
-  const models = [
-    { name: "Opus", cost: "$280", pct: 80 },
-    { name: "Sonnet", cost: "$180", pct: 55 },
-    { name: "Haiku", cost: "$45", pct: 15 },
-  ];
   return (
-    <div className="mt-4 space-y-3">
-      {models.map((m) => (
-        <div key={m.name} className="flex items-center gap-3">
-          <span className="w-14 font-mono text-[11px] text-text-secondary">
-            {m.name}
-          </span>
-          <div className="flex-1 h-2 rounded-full bg-track-bg overflow-hidden">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: `${m.pct}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-full rounded-full bg-accent-blue"
-            />
-          </div>
-          <span className="font-mono text-[11px] text-text-tertiary">
-            {m.cost}
-          </span>
-        </div>
-      ))}
-    </div>
+    <AnimatedBarList
+      items={[
+        { label: "Opus", pct: 80, value: "$280" },
+        { label: "Sonnet", pct: 55, value: "$180" },
+        { label: "Haiku", pct: 15, value: "$45" },
+      ]}
+      labelWidth="w-14"
+      labelClassName="text-[11px] text-text-secondary"
+      barColor="bg-accent-blue"
+      spacing="space-y-3"
+    />
   );
 }
 
@@ -290,14 +245,8 @@ function TerminalMini() {
 }
 
 function AutonomyViz() {
-  const metrics = [
-    { label: "Autopilot Ratio", value: "4.2x", pct: 84, color: "bg-accent-teal" },
-    { label: "Self-Heal Score", value: "78%", pct: 78, color: "bg-accent-blue" },
-    { label: "Toolbelt Coverage", value: "65%", pct: 65, color: "bg-accent-orange" },
-    { label: "Commit Velocity", value: "12", pct: 60, color: "bg-accent-teal" },
-  ];
   return (
-    <div className="mt-4 flex items-center gap-5">
+    <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:gap-5">
       {/* Grade ring */}
       <div className="relative flex h-[72px] w-[72px] shrink-0 items-center justify-center">
         <svg width="72" height="72" className="absolute -rotate-90">
@@ -323,26 +272,19 @@ function AutonomyViz() {
         <span className="font-mono text-2xl font-bold text-accent-teal">A</span>
       </div>
       {/* Metric bars */}
-      <div className="flex-1 space-y-2.5">
-        {metrics.map((m) => (
-          <div key={m.label} className="flex items-center gap-2">
-            <span className="w-24 truncate font-mono text-[10px] text-text-tertiary">
-              {m.label}
-            </span>
-            <div className="flex-1 h-1.5 rounded-full bg-track-bg overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${m.pct}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className={`h-full rounded-full ${m.color}`}
-              />
-            </div>
-            <span className="w-8 text-right font-mono text-[11px] font-medium text-text-primary">
-              {m.value}
-            </span>
-          </div>
-        ))}
+      <div className="flex-1">
+        <AnimatedBarList
+          items={[
+            { label: "Autopilot Ratio", value: "4.2x", pct: 84, color: "bg-accent-teal" },
+            { label: "Self-Heal Score", value: "78%", pct: 78, color: "bg-accent-blue" },
+            { label: "Toolbelt Coverage", value: "65%", pct: 65, color: "bg-accent-orange" },
+            { label: "Commit Velocity", value: "12", pct: 60, color: "bg-accent-teal" },
+          ]}
+          labelWidth="w-24"
+          barHeight="h-1.5"
+          valueClassName="w-8 text-right text-[11px] font-medium text-text-primary"
+          spacing="space-y-2.5"
+        />
       </div>
     </div>
   );
@@ -361,36 +303,20 @@ function ShieldIcon() {
   );
 }
 
-const visualizations = [
-  ROIViz,
-  CostBars,
-  SurvivalRing,
-  TokenBars,
-  ModelBars,
-  HeatmapMini,
-  OrphanedCount,
-  SparklineMini,
-  AutonomyViz,
-  TerminalMini,
-  ShieldIcon,
-];
-
-// Grid layout for 3-col grid — each row must sum to 3
-// Features order: ROI Grade, Cost/Commit, Line Survival, Token Analytics,
-//   Model Comparison, Productivity Heatmap, Session Analysis, Cost Breakdown,
-//   Zero Config, Privacy First
-const gridClasses = [
-  "sm:col-span-2",  // 0 ROI Grade (large)         row1: 2
-  "sm:col-span-1",  // 1 Cost per Commit            row1: +1=3
-  "sm:col-span-1",  // 2 Line Survival              row2: 1
-  "sm:col-span-1",  // 3 Token Analytics             row2: +1=2
-  "sm:col-span-1",  // 4 Model Comparison            row2: +1=3
-  "sm:col-span-1",  // 5 Heatmap                    row3: 1
-  "sm:col-span-1",  // 6 Session Analysis            row3: +1=2
-  "sm:col-span-1",  // 7 Cost Breakdown              row3: +1=3
-  "sm:col-span-2",  // 8 Agent Autonomy (NEW)       row4: 2
-  "sm:col-span-1",  // 9 Zero Config                row4: +1=3
-  "sm:col-span-3",  // 10 Privacy First (full)      row5: 3
+// Co-located feature metadata: icon, visualization, and grid class for each feature.
+// Order must match FEATURES in constants.ts. Each row in the 3-col grid must sum to 3.
+const featureConfig: { icon: LucideIcon; viz: () => React.JSX.Element; gridClass: string }[] = [
+  { icon: DollarSign,     viz: ROIViz,        gridClass: "md:col-span-2" },  // ROI Grade        row1: 2
+  { icon: GitCommit,      viz: CostBars,      gridClass: "md:col-span-1" },  // Cost per Commit  row1: +1=3
+  { icon: TrendingUp,     viz: SurvivalRing,  gridClass: "md:col-span-1" },  // Line Survival    row2: 1
+  { icon: BarChart3,      viz: TokenBars,     gridClass: "md:col-span-1" },  // Token Analytics   row2: +1=2
+  { icon: Layers,         viz: ModelBars,     gridClass: "md:col-span-1" },  // Model Comparison  row2: +1=3
+  { icon: Clock,          viz: HeatmapMini,   gridClass: "md:col-span-1" },  // Heatmap          row3: 1
+  { icon: AlertTriangle,  viz: OrphanedCount, gridClass: "md:col-span-1" },  // Session Analysis  row3: +1=2
+  { icon: LineChart,      viz: SparklineMini, gridClass: "md:col-span-1" },  // Cost Breakdown    row3: +1=3
+  { icon: Bot,            viz: AutonomyViz,   gridClass: "md:col-span-2" },  // Agent Autonomy    row4: 2
+  { icon: Zap,            viz: TerminalMini,  gridClass: "md:col-span-1" },  // Zero Config       row4: +1=3
+  { icon: Shield,         viz: ShieldIcon,    gridClass: "md:col-span-3" },  // Privacy First     row5: 3
 ];
 
 export function FeaturesGrid() {
@@ -404,10 +330,9 @@ export function FeaturesGrid() {
           accent="orange"
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
           {FEATURES.map((feature, i) => {
-            const Icon = icons[i];
-            const Viz = visualizations[i];
+            const { icon: Icon, viz: Viz, gridClass } = featureConfig[i];
 
             return (
               <motion.div
@@ -420,7 +345,7 @@ export function FeaturesGrid() {
                   delay: i * 0.06,
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
-                className={gridClasses[i]}
+                className={gridClass}
               >
                 <GlassCard
                   accent={feature.accent}
