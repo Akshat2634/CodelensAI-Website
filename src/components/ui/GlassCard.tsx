@@ -2,8 +2,9 @@
 
 import { useCallback } from "react";
 import { cn } from "@/lib/utils";
+import type { Accent } from "@/lib/constants";
 
-type AccentColor = "orange" | "teal" | "blue" | "red" | "none";
+type AccentColor = Accent | "none";
 
 const accentTopStyles: Record<AccentColor, string> = {
   orange:

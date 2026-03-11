@@ -1,3 +1,5 @@
+export type Accent = "orange" | "teal" | "blue" | "red";
+
 export const SITE = {
   name: "CodelensAI",
   tagline: "Agent Productivity-to-Cost Correlator",
@@ -15,6 +17,7 @@ export const STATS = {
   license: "MIT",
   dependencies: 3,
   unpackedSize: "163 kB",
+  lineSurvivalRate: 87,
 };
 
 export const FEATURES = [
