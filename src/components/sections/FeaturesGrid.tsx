@@ -199,7 +199,7 @@ function SparklineMini() {
 
   return (
     <div className="mt-4 flex justify-center">
-      <svg width={width} height={height + 4} className="overflow-visible">
+      <svg viewBox={`0 0 ${width} ${height + 4}`} className="overflow-visible w-full max-w-[200px]" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="var(--accent-orange)" />
@@ -280,7 +280,7 @@ function AutonomyViz() {
             { label: "Toolbelt Coverage", value: "65%", pct: 65, color: "bg-accent-orange" },
             { label: "Commit Velocity", value: "12", pct: 60, color: "bg-accent-teal" },
           ]}
-          labelWidth="w-24"
+          labelWidth="w-20 sm:w-24"
           barHeight="h-1.5"
           valueClassName="w-8 text-right text-[11px] font-medium text-text-primary"
           spacing="space-y-2.5"
@@ -321,7 +321,7 @@ const featureConfig: { icon: LucideIcon; viz: () => React.JSX.Element; gridClass
 
 export function FeaturesGrid() {
   return (
-    <section id="features" className="relative py-14 sm:py-20">
+    <section id="features" className="relative py-10 sm:py-20">
       <Container>
         <SectionHeading
           label="Key Features"

@@ -27,10 +27,12 @@ const wordVariants = {
 export function TextReveal({
   text,
   className,
+  wordClassName,
   controlled = false,
 }: {
   text: string;
   className?: string;
+  wordClassName?: string;
   controlled?: boolean;
 }) {
   const words = text.split(" ");
@@ -46,7 +48,7 @@ export function TextReveal({
     >
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden">
-          <motion.span variants={wordVariants} className="inline-block">
+          <motion.span variants={wordVariants} className={cn("inline-block", wordClassName)}>
             {word}
           </motion.span>
           {i < words.length - 1 && (

@@ -33,7 +33,7 @@ export function SocialProof() {
     },
   ];
   return (
-    <section id="testimonials" className="relative pt-8 pb-14 sm:pt-10 sm:pb-20">
+    <section id="testimonials" className="relative pt-6 pb-10 sm:pt-10 sm:pb-20">
       <Container>
         {/* Quote */}
         <motion.div

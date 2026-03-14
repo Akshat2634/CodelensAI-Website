@@ -64,10 +64,10 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[100dvh] items-center overflow-hidden">
+    <section className="relative flex min-h-0 sm:min-h-[100dvh] items-center overflow-hidden">
       <GridBackground className="absolute inset-0" showOrbs />
 
-      <Container className="relative z-10 py-16 sm:py-28">
+      <Container className="relative z-10 py-10 sm:py-28">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -83,9 +83,7 @@ export function HeroSection() {
               <TextReveal text="Stop guessing." controlled />
             </span>
             <br />
-            <span className="gradient-text-orange-teal">
-              <TextReveal text="Start measuring." controlled />
-            </span>
+            <TextReveal text="Start measuring." controlled wordClassName="gradient-text-orange-teal" />
           </h1>
 
           {/* Subheadline */}
@@ -98,7 +96,7 @@ export function HeroSection() {
           </motion.p>
 
           {/* Terminal */}
-          <motion.div variants={item} className="mt-10 w-full max-w-2xl">
+          <motion.div variants={item} className="mt-7 sm:mt-10 w-full max-w-2xl">
             <TerminalWindow title="~ terminal" className="text-left">
               <div className="flex items-center">
                 <span className="text-accent-teal">$</span>
@@ -121,7 +119,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, x: -5 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3 }}
-                        className={`text-[11px] sm:text-[13px] ${line.color}`}
+                        className={`text-xs sm:text-[13px] ${line.color}`}
                       >
                         {i === terminalLines.length - 1 ? (
                           <span className="font-semibold">{line.text}</span>
@@ -137,7 +135,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* CTAs */}
-          <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <motion.div variants={item} className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#install"
               className="group flex items-center gap-2 rounded-xl bg-accent-teal px-6 py-3 font-medium text-bg-primary transition-all hover:brightness-110 hover:shadow-[0_0_30px_rgba(46,204,113,0.25)]"
@@ -169,7 +167,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* Trust bar marquee */}
-          <motion.div variants={item} className="mt-8 w-full max-w-2xl">
+          <motion.div variants={item} className="mt-6 sm:mt-8 w-full max-w-2xl">
             <Marquee speed={25}>
               {trustItems.map((text, i) => (
                 <span

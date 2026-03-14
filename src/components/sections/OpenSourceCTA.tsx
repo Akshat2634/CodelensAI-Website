@@ -7,7 +7,7 @@ import { SITE, STATS } from "@/lib/constants";
 
 export function OpenSourceCTA() {
   return (
-    <section id="open-source" className="relative py-14 sm:py-20">
+    <section id="open-source" className="relative py-10 sm:py-20">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

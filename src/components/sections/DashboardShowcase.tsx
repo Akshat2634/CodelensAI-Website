@@ -74,7 +74,7 @@ export function DashboardShowcase() {
   }, []);
 
   return (
-    <section id="dashboard" className="relative pt-12 pb-6 sm:pt-16 sm:pb-8 overflow-hidden">
+    <section id="dashboard" className="relative pt-10 pb-4 sm:pt-16 sm:pb-8 overflow-hidden">
       <Container wide>
         <SectionHeading
           label="Dashboard Preview"
@@ -83,7 +83,7 @@ export function DashboardShowcase() {
           accent="teal"
         />
 
-        <div ref={ref} className="relative mt-12 sm:mt-16">
+        <div ref={ref} className="relative mt-10 sm:mt-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -109,7 +109,7 @@ export function DashboardShowcase() {
               {/* Screenshot carousel */}
               <div className="relative bg-screenshot-bg overflow-hidden">
                 {/* Fixed-height container to prevent layout shift */}
-                <div className="relative aspect-[14/9]">
+                <div className="relative aspect-[4/3] sm:aspect-[14/9]">
                   <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.img
                       key={current}

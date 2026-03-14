@@ -15,7 +15,7 @@ const altInstalls = [
 
 export function InstallSection() {
   return (
-    <section id="install" className="relative py-14 sm:py-20">
+    <section id="install" className="relative py-10 sm:py-20">
       <Container>
         <SectionHeading
           label="Get Started"

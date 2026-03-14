@@ -25,7 +25,7 @@ export function GridBackground({
         <>
           <motion.div
             style={{ y: orbY1 }}
-            className="pointer-events-none absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full opacity-[0.07]"
+            className="pointer-events-none absolute -top-40 -left-40 h-[300px] w-[300px] sm:h-[600px] sm:w-[600px] rounded-full opacity-[0.07]"
           >
             <div
               className="h-full w-full rounded-full"
@@ -37,7 +37,7 @@ export function GridBackground({
           </motion.div>
           <motion.div
             style={{ y: orbY2 }}
-            className="pointer-events-none absolute -right-40 -bottom-40 h-[500px] w-[500px] rounded-full opacity-[0.05]"
+            className="pointer-events-none absolute -right-40 -bottom-40 h-[250px] w-[250px] sm:h-[500px] sm:w-[500px] rounded-full opacity-[0.05]"
           >
             <div
               className="h-full w-full rounded-full"

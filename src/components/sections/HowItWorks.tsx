@@ -17,7 +17,7 @@ const accentColors = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative pt-14 pb-8 sm:pt-20 sm:pb-10">
+    <section id="how-it-works" className="relative pt-10 pb-6 sm:pt-20 sm:pb-10">
       <Container>
         <SectionHeading
           label="How It Works"

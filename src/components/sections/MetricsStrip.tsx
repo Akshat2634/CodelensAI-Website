@@ -58,7 +58,7 @@ export function MetricsStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 gap-6 rounded-2xl border border-border-subtle bg-bg-glass p-6 backdrop-blur-xl sm:grid-cols-3 lg:grid-cols-5 sm:p-8"
+          className="grid grid-cols-2 gap-4 sm:gap-6 rounded-2xl border border-border-subtle bg-bg-glass p-5 backdrop-blur-xl sm:grid-cols-3 lg:grid-cols-5 sm:p-8"
         >
           {metrics.map((m, i) => (
             <div
