@@ -8,29 +8,34 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const slides = [
   {
-    src: "/screenshots/dashboard-hero.png",
-    alt: "CodelensAI Dashboard — Performance Overview with ROI Grade, Cost per Commit, and Line Survival Rate",
-    label: "Performance Overview",
+    src: "/screenshots/overview.webp",
+    alt: "CodelensAI Dashboard — multi-agent overview with All Agents, Claude Code, and OpenAI Codex tabs and a weekly report",
+    label: "Multi-Agent Overview",
   },
   {
-    src: "/screenshots/stats1.png",
-    alt: "CodelensAI Dashboard — Cost Breakdown and Spending Analytics",
-    label: "Cost Breakdown",
+    src: "/screenshots/performance.webp",
+    alt: "CodelensAI Dashboard — Performance Overview with ROI grade, spend, commits shipped, and cost per commit",
+    label: "Performance & ROI",
   },
   {
-    src: "/screenshots/stats2.png",
-    alt: "CodelensAI Dashboard — Token Usage and Model Comparison",
-    label: "Token Analytics",
+    src: "/screenshots/effective-cost.webp",
+    alt: "CodelensAI Dashboard — Effective Cost against your subscription plan and Attribution & Coverage confidence",
+    label: "Effective Cost",
   },
   {
-    src: "/screenshots/stats3.png",
-    alt: "CodelensAI Dashboard — Session Analysis and Productivity Heatmap",
-    label: "Session Insights",
+    src: "/screenshots/models.webp",
+    alt: "CodelensAI Dashboard — cost per commit by model across Claude and Codex, and a productivity heatmap",
+    label: "Model Comparison",
   },
   {
-    src: "/screenshots/stats4.png",
-    alt: "CodelensAI Dashboard — Agent Autonomy, Line Survival Rate, and Session Details",
+    src: "/screenshots/autonomy.webp",
+    alt: "CodelensAI Dashboard — Agent Autonomy score with autopilot ratio, self-heal, toolbelt coverage, and commit velocity",
     label: "Agent Autonomy",
+  },
+  {
+    src: "/screenshots/sessions.webp",
+    alt: "CodelensAI Dashboard — sortable sessions table with per-session model, cost, commits, and grade",
+    label: "Session Analysis",
   },
 ];
 
@@ -79,7 +84,7 @@ export function DashboardShowcase() {
         <SectionHeading
           label="Dashboard Preview"
           heading="See exactly where your tokens go"
-          subheading="A beautiful localhost dashboard that breaks down every dollar of your AI spend into actionable insights."
+          subheading="A local-first dashboard that breaks every dollar of your Claude Code and Codex spend into auditable, per-agent insights."
           accent="teal"
         />
 

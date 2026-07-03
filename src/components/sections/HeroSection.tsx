@@ -16,11 +16,11 @@ import { SITE, STATS } from "@/lib/constants";
 const terminalLines = [
   { text: "Starting CodelensAI dashboard...", color: "text-text-secondary" },
   {
-    text: "Parsing 85 sessions from ~/.claude/projects/",
+    text: "Parsing 45 sessions — Claude Code + OpenAI Codex",
     color: "text-text-secondary",
   },
   {
-    text: "Analyzing git history across 3 repositories...",
+    text: "Correlating sessions with git history...",
     color: "text-text-secondary",
   },
   {
@@ -28,13 +28,13 @@ const terminalLines = [
     color: "text-accent-blue",
   },
   {
-    text: "ROI Grade: B | Cost/Commit: $3.57 | Survival: 87%",
+    text: "ROI Grade: A | Cost/Commit: $1.96 | Survival: 90%",
     color: "text-accent-teal",
   },
 ];
 
 const staticTrustItems = [
-  "Free Forever",
+  "Claude Code + OpenAI Codex",
   `${STATS.license} License`,
   "Zero Config",
   "Privacy First",
@@ -93,8 +93,10 @@ export function HeroSection() {
             variants={item}
             className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
           >
-            The open-source ROI dashboard that ties your AI agent token spend
-            to actual git output.
+            The open-source ROI dashboard that ties your{" "}
+            <span className="text-text-primary">Claude Code</span> and{" "}
+            <span className="text-text-primary">OpenAI Codex</span> token spend to
+            actual git output — one command, all local.
           </motion.p>
 
           {/* Terminal */}

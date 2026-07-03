@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { DashboardShowcase } from "@/components/sections/DashboardShowcase";
+import { AgentSupport } from "@/components/sections/AgentSupport";
 import { FeaturesGrid } from "@/components/sections/FeaturesGrid";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { MetricsStrip } from "@/components/sections/MetricsStrip";
@@ -17,6 +18,7 @@ export default function Home() {
         <HeroSection />
         <DashboardShowcase />
         <MetricsStrip />
+        <AgentSupport />
         <FeaturesGrid />
         <HowItWorks />
         <SocialProof />

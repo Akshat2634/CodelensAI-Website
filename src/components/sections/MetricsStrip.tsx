@@ -8,7 +8,7 @@ import { STATS } from "@/lib/constants";
 
 const metrics = [
   {
-    value: 3.57,
+    value: STATS.costPerCommit,
     prefix: "$",
     suffix: "",
     decimals: 2,
@@ -24,7 +24,7 @@ const metrics = [
     color: "text-accent-teal",
   },
   {
-    value: 86,
+    value: STATS.tokenEfficiency,
     prefix: "",
     suffix: "%",
     decimals: 0,
@@ -32,7 +32,7 @@ const metrics = [
     color: "text-accent-blue",
   },
   {
-    value: 171,
+    value: STATS.commitsShipped,
     prefix: "",
     suffix: "",
     decimals: 0,
@@ -40,11 +40,11 @@ const metrics = [
     color: "text-accent-teal",
   },
   {
-    value: 610.95,
-    prefix: "$",
-    suffix: "",
-    decimals: 2,
-    label: "Total Tracked",
+    value: STATS.planUtilization,
+    prefix: "",
+    suffix: "×",
+    decimals: 1,
+    label: "Plan Value Extracted",
     color: "text-accent-orange",
   },
 ];

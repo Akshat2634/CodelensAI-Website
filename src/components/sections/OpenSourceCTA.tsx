@@ -74,8 +74,8 @@ export function OpenSourceCTA() {
 
             {/* Tech stats */}
             <p className="mt-8 font-mono text-xs text-text-tertiary">
-              {STATS.license} Licensed · {STATS.dependencies} dependencies ·{" "}
-              {STATS.unpackedSize} unpacked
+              {STATS.license} Licensed · {STATS.dependencies} dependencies · Claude Code
+              + OpenAI Codex
             </p>
           </div>
         </motion.div>
