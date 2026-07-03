@@ -1,8 +1,8 @@
 # CodelensAI Website
 
-The promotional landing page for [CodelensAI](https://github.com/Akshat2634/Codelens-AI) (`codelens-ai`) — the open-source ROI dashboard that ties your AI agent token spend to actual git output.
+The promotional landing page for [CodelensAI](https://github.com/Akshat2634/Codelens-AI) (`codelens-ai`) — the open-source ROI dashboard that ties your Claude Code and OpenAI Codex token spend to actual git output, side by side in one dashboard.
 
-> **Note:** Previously published as `claude-roi` — same tool, new name. The package was renamed to `codelens-ai` to be agent-neutral (supports Claude, Codex, Cursor, and more).
+> **Note:** Previously published as `claude-roi` — same tool, new name. The package was renamed to `codelens-ai` when it grew beyond a single agent; it now reads both Claude Code (`~/.claude/projects/`) and OpenAI Codex (`~/.codex/sessions/`) sessions.
 
 **Live site**: [codelensai.dev](https://codelensai-dev.vercel.app/)
 

@@ -3,10 +3,10 @@ import { Container } from "@/components/ui/Container";
 import { SITE } from "@/lib/constants";
 
 const productLinks = [
+  { label: "Multi-Agent", href: "#agents" },
   { label: "Features", href: "#features" },
   { label: "How it Works", href: "#how-it-works" },
   { label: "Install", href: "#install" },
-  { label: "CLI Options", href: "#install" },
 ];
 
 const resourceLinks = [

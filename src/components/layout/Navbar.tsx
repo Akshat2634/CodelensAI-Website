@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { SITE } from "@/lib/constants";
 
 const navLinks = [
+  { label: "Agents", href: "#agents" },
   { label: "Features", href: "#features" },
   { label: "How it Works", href: "#how-it-works" },
   { label: "Install", href: "#install" },

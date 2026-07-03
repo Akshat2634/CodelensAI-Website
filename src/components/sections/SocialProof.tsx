@@ -45,9 +45,9 @@ export function SocialProof() {
         >
           <Quote className="absolute top-6 right-6 h-8 w-8 text-accent-orange/20" />
           <blockquote className="text-lg leading-relaxed text-text-primary sm:text-xl">
-            &ldquo;I built this because I was spending hundreds on Claude Code and had no
-            idea if it was worth it. CodelensAI gives you the answer in one
-            command.&rdquo;
+            &ldquo;I was spending hundreds on Claude Code and Codex with no idea if it
+            was worth it. CodelensAI answers that in one command — and lets me compare
+            both agents side by side.&rdquo;
           </blockquote>
           <div className="mt-6 flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-accent-orange to-accent-teal" />
