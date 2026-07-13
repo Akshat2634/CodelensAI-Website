@@ -16,6 +16,14 @@ const metrics = [
     color: "text-accent-orange",
   },
   {
+    value: STATS.aiCodeShare,
+    prefix: "",
+    suffix: "%",
+    decimals: 0,
+    label: "AI Code Share",
+    color: "text-accent-blue",
+  },
+  {
     value: STATS.lineSurvivalRate,
     prefix: "",
     suffix: "%",
@@ -58,13 +66,10 @@ export function MetricsStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 gap-6 rounded-2xl border border-border-subtle bg-bg-glass p-6 backdrop-blur-xl sm:grid-cols-3 lg:grid-cols-5 sm:p-8"
+          className="grid grid-cols-2 gap-6 rounded-2xl border border-border-subtle bg-bg-glass p-6 backdrop-blur-xl sm:grid-cols-3 lg:grid-cols-6 sm:p-8"
         >
           {metrics.map((m, i) => (
-            <div
-              key={i}
-              className={cn("text-center", i === metrics.length - 1 && "col-span-2 sm:col-span-1")}
-            >
+            <div key={i} className={cn("text-center")}>
               <div className={`font-mono text-2xl font-bold sm:text-3xl ${m.color}`}>
                 <AnimatedCounter
                   end={m.value}

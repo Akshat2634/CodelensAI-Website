@@ -2,36 +2,36 @@
 
 :root,
 .dark {
-  /* Base Dark Theme */
-  --bg-primary: #06080f;
-  --bg-secondary: #0c1018;
-  --bg-elevated: #121620;
-  --bg-glass: rgba(18, 22, 32, 0.7);
-  --bg-glass-hover: rgba(18, 22, 32, 0.85);
+  /* Base Dark Theme — deep space navy with a violet cast */
+  --bg-primary: #05060d;
+  --bg-secondary: #0a0d17;
+  --bg-elevated: #10141f;
+  --bg-glass: rgba(16, 20, 31, 0.7);
+  --bg-glass-hover: rgba(16, 20, 31, 0.85);
 
   /* Text Hierarchy */
-  --text-primary: #f0f2f5;
-  --text-secondary: #8b92a5;
-  --text-tertiary: #4a5067;
+  --text-primary: #f2f4f8;
+  --text-secondary: #94a0b8;
+  --text-tertiary: #566078;
 
-  /* Accent Colors */
-  --accent-orange: #e67e22;
-  --accent-orange-dim: rgba(230, 126, 34, 0.15);
-  --accent-teal: #2ecc71;
-  --accent-teal-dim: rgba(46, 204, 113, 0.15);
-  --accent-blue: #3498db;
-  --accent-blue-dim: rgba(52, 152, 219, 0.15);
-  --accent-red: #e74c3c;
-  --accent-red-dim: rgba(231, 76, 60, 0.15);
-  --accent-purple: #9b59b6;
+  /* Accent Colors — vivid, modern */
+  --accent-orange: #f97316;
+  --accent-orange-dim: rgba(249, 115, 22, 0.14);
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.13);
+  --accent-blue: #60a5fa;
+  --accent-blue-dim: rgba(96, 165, 250, 0.13);
+  --accent-red: #f87171;
+  --accent-red-dim: rgba(248, 113, 113, 0.13);
+  --accent-purple: #c084fc;
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.14);
 
   /* Terminal Chrome */
-  --terminal-bg: #1a1a2e;
-  --terminal-content-bg: #0d1117;
+  --terminal-bg: #141828;
+  --terminal-content-bg: #0b0e18;
   --terminal-url-bg: rgba(255, 255, 255, 0.05);
   --screenshot-bg: #f5f6fa;
   --arrow-bg: rgba(0, 0, 0, 0.5);
@@ -50,35 +50,35 @@
 
 .light {
   /* Light Theme */
-  --bg-primary: #f8f9fc;
-  --bg-secondary: #eef0f5;
+  --bg-primary: #f7f8fb;
+  --bg-secondary: #edeff5;
   --bg-elevated: #ffffff;
   --bg-glass: rgba(255, 255, 255, 0.75);
   --bg-glass-hover: rgba(255, 255, 255, 0.9);
 
   /* Text Hierarchy */
-  --text-primary: #0f1729;
-  --text-secondary: #4a5568;
-  --text-tertiary: #9ca3b8;
+  --text-primary: #0e1526;
+  --text-secondary: #46516b;
+  --text-tertiary: #98a1b8;
 
-  /* Accent Colors (slightly deeper for contrast on light) */
-  --accent-orange: #d35400;
-  --accent-orange-dim: rgba(211, 84, 0, 0.1);
-  --accent-teal: #219a52;
-  --accent-teal-dim: rgba(33, 154, 82, 0.1);
-  --accent-blue: #2980b9;
-  --accent-blue-dim: rgba(41, 128, 185, 0.1);
-  --accent-red: #c0392b;
-  --accent-red-dim: rgba(192, 57, 43, 0.1);
-  --accent-purple: #8e44ad;
+  /* Accent Colors (deeper for contrast on light) */
+  --accent-orange: #ea580c;
+  --accent-orange-dim: rgba(234, 88, 12, 0.1);
+  --accent-teal: #0d9488;
+  --accent-teal-dim: rgba(13, 148, 136, 0.1);
+  --accent-blue: #2563eb;
+  --accent-blue-dim: rgba(37, 99, 235, 0.1);
+  --accent-red: #dc2626;
+  --accent-red-dim: rgba(220, 38, 38, 0.1);
+  --accent-purple: #9333ea;
 
   /* Borders */
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(0, 0, 0, 0.15);
+  --border-subtle: rgba(14, 21, 38, 0.08);
+  --border-hover: rgba(14, 21, 38, 0.16);
 
   /* Terminal Chrome */
   --terminal-bg: #e2e4ea;
-  --terminal-content-bg: #1e1e2e;
+  --terminal-content-bg: #10141f;
   --terminal-url-bg: rgba(0, 0, 0, 0.06);
   --screenshot-bg: #f5f6fa;
   --arrow-bg: rgba(0, 0, 0, 0.4);
@@ -86,11 +86,11 @@
   --arrow-text: #ffffff;
 
   /* Progress bar tracks */
-  --track-bg: rgba(0, 0, 0, 0.06);
+  --track-bg: rgba(14, 21, 38, 0.06);
 
   /* Shadows */
-  --shadow-heavy: rgba(0, 0, 0, 0.15);
-  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --shadow-heavy: rgba(14, 21, 38, 0.15);
+  --shadow-medium: rgba(14, 21, 38, 0.1);
 
   color-scheme: light;
 }
@@ -114,6 +114,7 @@
   --color-accent-blue-dim: var(--accent-blue-dim);
   --color-accent-red: var(--accent-red);
   --color-accent-red-dim: var(--accent-red-dim);
+  --color-accent-purple: var(--accent-purple);
 
   --color-border-subtle: var(--border-subtle);
   --color-border-hover: var(--border-hover);
@@ -182,11 +183,49 @@ html {
   background-clip: text;
 }
 
-/* Animated gradient border */
+/* Animated shimmer gradient text — hero headline */
+.text-shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--accent-orange) 20%,
+    var(--accent-teal) 40%,
+    var(--accent-blue) 60%,
+    var(--accent-orange) 80%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -250% 0;
+  }
+}
+
+/* Animated conic beam border — wrap element in .beam-border with p-px */
 @property --gradient-angle {
   syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
+}
+
+.beam-border {
+  position: relative;
+  border-radius: 0.85rem;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--border-subtle),
+    var(--accent-teal) 12%,
+    var(--border-subtle) 26%,
+    var(--border-subtle) 55%,
+    var(--accent-orange) 68%,
+    var(--border-subtle) 82%
+  );
+  animation: rotate-gradient 6s linear infinite;
 }
 
 .gradient-border-animated {
@@ -274,7 +313,7 @@ html {
 
 /* Selection */
 ::selection {
-  background: rgba(46, 204, 113, 0.3);
+  background: rgba(45, 212, 191, 0.3);
   color: var(--text-primary);
 }
 
@@ -319,7 +358,7 @@ html {
   border-radius: inherit;
   background: radial-gradient(
     400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(230, 126, 34, 0.06),
+    rgba(45, 212, 191, 0.07),
     transparent 40%
   );
   pointer-events: none;

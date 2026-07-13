@@ -14,6 +14,9 @@ import {
   Shield,
   Bot,
   Users,
+  GitBranch,
+  Droplets,
+  Gauge,
   type LucideIcon,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -128,6 +131,70 @@ function SurvivalRing() {
         </span>
       </div>
       <span className="text-xs text-text-tertiary">of AI lines survive 24h</span>
+    </div>
+  );
+}
+
+function AICodeShareViz() {
+  const segments = [
+    { label: "AI-written", pct: STATS.aiCodeShare, color: "bg-accent-teal" },
+    { label: "Human", pct: 100 - STATS.aiCodeShare, color: "bg-text-tertiary/40" },
+  ];
+  return (
+    <div className="mt-4">
+      <div className="flex h-3 w-full overflow-hidden rounded-full bg-track-bg">
+        {segments.map((seg) => (
+          <motion.div
+            key={seg.label}
+            initial={{ width: 0 }}
+            whileInView={{ width: `${seg.pct}%` }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className={`h-full ${seg.color}`}
+          />
+        ))}
+      </div>
+      <div className="mt-2 flex justify-between">
+        {segments.map((seg) => (
+          <span key={seg.label} className="font-mono text-[10px] text-text-tertiary">
+            {seg.label} {seg.pct}%
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ValueLeakViz() {
+  return (
+    <div className="mt-4 flex items-center justify-center gap-4">
+      <div className="text-center">
+        <div className="font-mono text-3xl font-bold text-accent-red">
+          {STATS.valueLeakPct}%
+        </div>
+        <div className="mt-1 text-[10px] text-text-tertiary">of spend leaked</div>
+      </div>
+      <div className="text-left text-xs leading-snug text-text-tertiary">
+        $24.56 that never
+        <br />
+        became a commit
+      </div>
+    </div>
+  );
+}
+
+function StatuslineViz() {
+  return (
+    <div className="mt-4 overflow-x-auto rounded-lg bg-terminal-content-bg px-3 py-2.5">
+      <code className="whitespace-nowrap font-mono text-[10px] leading-relaxed">
+        <span className="text-accent-teal">$4.20 session</span>
+        <span className="text-text-tertiary"> │ </span>
+        <span className="text-[#94a0b8]">today $12.40 · 3 commits</span>
+        <span className="text-text-tertiary"> │ </span>
+        <span className="text-accent-orange">burn 2.6K/min</span>
+        <span className="text-text-tertiary"> │ </span>
+        <span className="text-accent-blue">5h 84%</span>
+      </code>
     </div>
   );
 }
@@ -325,15 +392,18 @@ const featureConfig: { icon: LucideIcon; viz: () => React.JSX.Element; gridClass
   { icon: Users,         viz: AgentTabsViz,     gridClass: "md:col-span-2" }, // Multi-Agent      row1: 2
   { icon: DollarSign,    viz: ROIViz,           gridClass: "md:col-span-1" }, // ROI Grade        row1: +1=3
   { icon: GitCommit,     viz: CostBars,         gridClass: "md:col-span-1" }, // Cost per Commit  row2: 1
-  { icon: TrendingUp,    viz: SurvivalRing,     gridClass: "md:col-span-1" }, // Line Survival    row2: +1=2
-  { icon: Wallet,        viz: EffectiveCostViz, gridClass: "md:col-span-1" }, // Effective Cost   row2: +1=3
+  { icon: GitBranch,     viz: AICodeShareViz,   gridClass: "md:col-span-1" }, // AI Code Share    row2: +1=2
+  { icon: Droplets,      viz: ValueLeakViz,     gridClass: "md:col-span-1" }, // Value Leak       row2: +1=3
   { icon: Layers,        viz: ModelBars,        gridClass: "md:col-span-2" }, // Model Comparison row3: 2
-  { icon: ScanSearch,    viz: AttributionViz,   gridClass: "md:col-span-1" }, // Attribution      row3: +1=3
-  { icon: Bot,           viz: AutonomyViz,      gridClass: "md:col-span-2" }, // Agent Autonomy   row4: 2
+  { icon: TrendingUp,    viz: SurvivalRing,     gridClass: "md:col-span-1" }, // Line Survival    row3: +1=3
+  { icon: Wallet,        viz: EffectiveCostViz, gridClass: "md:col-span-1" }, // Effective Cost   row4: 1
+  { icon: ScanSearch,    viz: AttributionViz,   gridClass: "md:col-span-1" }, // Attribution      row4: +1=2
   { icon: Clock,         viz: HeatmapMini,      gridClass: "md:col-span-1" }, // Heatmap          row4: +1=3
-  { icon: BarChart3,     viz: TokenBars,        gridClass: "md:col-span-1" }, // Token Analytics  row5: 1
-  { icon: AlertTriangle, viz: OrphanedCount,    gridClass: "md:col-span-1" }, // Session Analysis row5: +1=2
-  { icon: Shield,        viz: ShieldIcon,       gridClass: "md:col-span-1" }, // Privacy First    row5: +1=3
+  { icon: Bot,           viz: AutonomyViz,      gridClass: "md:col-span-2" }, // Agent Autonomy   row5: 2
+  { icon: BarChart3,     viz: TokenBars,        gridClass: "md:col-span-1" }, // Token Analytics  row5: +1=3
+  { icon: AlertTriangle, viz: OrphanedCount,    gridClass: "md:col-span-1" }, // Session Analysis row6: 1
+  { icon: Gauge,         viz: StatuslineViz,    gridClass: "md:col-span-1" }, // Reports & Statusline row6: +1=2
+  { icon: Shield,        viz: ShieldIcon,       gridClass: "md:col-span-1" }, // Privacy First    row6: +1=3
 ];
 
 export function FeaturesGrid() {

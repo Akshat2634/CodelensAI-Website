@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote, Download, Package, Scale, Box } from "lucide-react";
+import { Quote, Download, Package, Scale, Rocket } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { useNpmStats } from "@/lib/useNpmStats";
@@ -22,14 +22,14 @@ export function SocialProof() {
       label: "Current Version",
     },
     {
+      icon: Rocket,
+      render: () => <AnimatedCounter end={STATS.releases} suffix="+" />,
+      label: "Releases Shipped",
+    },
+    {
       icon: Scale,
       render: () => <>{STATS.license}</>,
       label: "Open Source License",
-    },
-    {
-      icon: Box,
-      render: () => <AnimatedCounter end={STATS.dependencies} />,
-      label: "Dependencies",
     },
   ];
   return (
@@ -46,8 +46,8 @@ export function SocialProof() {
           <Quote className="absolute top-6 right-6 h-8 w-8 text-accent-orange/20" />
           <blockquote className="text-lg leading-relaxed text-text-primary sm:text-xl">
             &ldquo;I was spending hundreds on Claude Code and Codex with no idea if it
-            was worth it. CodelensAI answers that in one command — and lets me compare
-            both agents side by side.&rdquo;
+            was worth it. CodelensAI answers that in one command — in my dashboard, my
+            terminal, my statusline, and now even in-chat over MCP.&rdquo;
           </blockquote>
           <div className="mt-6 flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-accent-orange to-accent-teal" />

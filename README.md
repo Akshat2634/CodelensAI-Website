@@ -1,6 +1,6 @@
 # CodelensAI Website
 
-The promotional landing page for [CodelensAI](https://github.com/Akshat2634/Codelens-AI) (`codelens-ai`) — the open-source ROI dashboard that ties your Claude Code and OpenAI Codex token spend to actual git output, side by side in one dashboard.
+The promotional landing page for [CodelensAI](https://github.com/Akshat2634/Codelens-AI) (`codelens-ai`) — the open-source ROI toolkit that ties your Claude Code and OpenAI Codex token spend to actual git output: a local dashboard with per-agent tabs, terminal ROI reports, ccusage-style usage tables, 5-hour billing blocks, a Claude Code statusline, and an MCP server.
 
 > **Note:** Previously published as `claude-roi` — same tool, new name. The package was renamed to `codelens-ai` when it grew beyond a single agent; it now reads both Claude Code (`~/.claude/projects/`) and OpenAI Codex (`~/.codex/sessions/`) sessions.
 
@@ -60,8 +60,11 @@ src/
 
 - Dark / Light / System theme toggle
 - Animated terminal with typewriter effect
-- Dashboard screenshot carousel with slide navigation
+- Dashboard screenshot carousel with auto-advance, keyboard, and slide navigation
+- Interactive CLI toolkit explorer (report / daily / blocks / statusline / mcp tabs)
+- Interactive ROI calculator with live effective-cost math
 - Bento-grid feature cards with mini-visualizations
+- FAQ accordion with matching FAQPage JSON-LD for rich search results
 - Animated counters, progress bars, and heatmaps
 - One-click copy-to-clipboard install commands
 - Fully responsive (mobile, tablet, desktop)

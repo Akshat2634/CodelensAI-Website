@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight, Github, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { GridBackground } from "@/components/ui/GridBackground";
 import { TerminalWindow } from "@/components/ui/TerminalWindow";
@@ -28,13 +28,14 @@ const terminalLines = [
     color: "text-accent-blue",
   },
   {
-    text: "ROI Grade: A | Cost/Commit: $1.96 | Survival: 90%",
+    text: "ROI: A · $1.96/commit · AI share 64% · survival 90%",
     color: "text-accent-teal",
   },
 ];
 
 const staticTrustItems = [
   "Claude Code + OpenAI Codex",
+  "MCP Server Built In",
   `${STATS.license} License`,
   "Zero Config",
   "Privacy First",
@@ -77,13 +78,27 @@ export function HeroSection() {
           }}
           className="flex flex-col items-center text-center"
         >
+          {/* Release badge */}
+          <motion.a
+            variants={item}
+            href="#cli"
+            className="group mb-6 flex items-center gap-2 rounded-full border border-border-subtle bg-bg-glass px-4 py-1.5 backdrop-blur-xl transition-all hover:border-accent-teal/40"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-accent-teal" />
+            <span className="font-mono text-xs text-text-secondary">
+              New in v{STATS.version.split(".").slice(0, 2).join(".")} — MCP server, billing
+              blocks & statusline
+            </span>
+            <ArrowRight className="h-3 w-3 text-text-tertiary transition-transform group-hover:translate-x-0.5" />
+          </motion.a>
+
           {/* Headline */}
           <h1 className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
             <span className="text-text-primary">
               <TextReveal text="Stop guessing." controlled />
             </span>
             <br />
-            <span className="gradient-text-orange-teal">
+            <span className="text-shimmer">
               <TextReveal text="Start measuring." controlled />
             </span>
           </h1>
@@ -142,7 +157,7 @@ export function HeroSection() {
           <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#install"
-              className="group flex items-center gap-2 rounded-xl bg-accent-teal px-6 py-3 font-medium text-bg-primary transition-all hover:brightness-110 hover:shadow-[0_0_30px_rgba(46,204,113,0.25)]"
+              className="group flex items-center gap-2 rounded-xl bg-accent-teal px-6 py-3 font-medium text-bg-primary transition-all hover:brightness-110 hover:shadow-[0_0_30px_rgba(45,212,191,0.3)]"
             >
               Get Started
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

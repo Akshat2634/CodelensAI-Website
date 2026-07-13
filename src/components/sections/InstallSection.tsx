@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TerminalWindow } from "@/components/ui/TerminalWindow";
 import { CopyButton } from "@/components/ui/CopyButton";
-import { INSTALL_COMMANDS, CLI_OPTIONS } from "@/lib/constants";
+import { INSTALL_COMMANDS, POWER_COMMANDS, CLI_OPTIONS } from "@/lib/constants";
 
 const altInstalls = [
   { label: "npm", command: INSTALL_COMMANDS.npm },
@@ -84,6 +84,37 @@ export function InstallSection() {
                     </span>
                   </div>
                   <CopyButton text={install.command} />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Power-ups: statusline + MCP */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-10"
+          >
+            <p className="mb-3 text-center text-xs text-text-tertiary">
+              Then level up:
+            </p>
+            <div className="space-y-3">
+              {POWER_COMMANDS.map((pc) => (
+                <div
+                  key={pc.command}
+                  className="flex items-center justify-between gap-3 rounded-lg border border-border-subtle bg-bg-elevated px-4 py-3"
+                >
+                  <div className="min-w-0">
+                    <code className="block truncate font-mono text-xs text-accent-teal">
+                      $ {pc.command}
+                    </code>
+                    <span className="mt-1 block text-[11px] text-text-tertiary">
+                      {pc.description}
+                    </span>
+                  </div>
+                  <CopyButton text={pc.command} />
                 </div>
               ))}
             </div>

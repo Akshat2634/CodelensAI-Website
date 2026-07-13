@@ -5,8 +5,9 @@ import { SITE } from "@/lib/constants";
 const productLinks = [
   { label: "Multi-Agent", href: "#agents" },
   { label: "Features", href: "#features" },
-  { label: "How it Works", href: "#how-it-works" },
+  { label: "CLI Toolkit", href: "#cli" },
   { label: "Install", href: "#install" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 const resourceLinks = [

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -59,6 +59,7 @@ export function DashboardShowcase() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const goTo = useCallback(
     (index: number) => {
@@ -78,6 +79,22 @@ export function DashboardShowcase() {
     setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1));
   }, []);
 
+  // Auto-advance every 6s once in view; pause on hover/focus and for reduced motion
+  useEffect(() => {
+    if (!isInView || paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(next, 6000);
+    return () => clearInterval(id);
+  }, [isInView, paused, next]);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    },
+    [prev, next]
+  );
+
   return (
     <section id="dashboard" className="relative pt-12 pb-6 sm:pt-16 sm:pb-8 overflow-hidden">
       <Container wide>
@@ -96,7 +113,17 @@ export function DashboardShowcase() {
             className="relative mx-auto max-w-5xl"
           >
             {/* Browser chrome */}
-            <div className="overflow-hidden rounded-xl border border-border-subtle shadow-2xl shadow-shadow-heavy">
+            <div
+              role="region"
+              aria-label="Dashboard screenshots — use arrow keys to navigate"
+              tabIndex={0}
+              onKeyDown={handleKeyDown}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              onFocus={() => setPaused(true)}
+              onBlur={() => setPaused(false)}
+              className="overflow-hidden rounded-xl border border-border-subtle shadow-2xl shadow-shadow-heavy outline-none focus-visible:ring-2 focus-visible:ring-accent-teal/50"
+            >
               {/* Address bar */}
               <div className="flex items-center gap-2 border-b border-border-subtle bg-terminal-bg px-4 py-2.5">
                 <div className="flex gap-1.5">
