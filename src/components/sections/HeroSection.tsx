@@ -98,7 +98,7 @@ export function HeroSection() {
               <TextReveal text="Stop guessing." controlled />
             </span>
             <br />
-            <span className="text-shimmer">
+            <span className="gradient-text-orange-teal">
               <TextReveal text="Start measuring." controlled />
             </span>
           </h1>
