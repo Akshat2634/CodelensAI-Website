@@ -183,28 +183,6 @@ html {
   background-clip: text;
 }
 
-/* Animated shimmer gradient text — hero headline */
-.text-shimmer {
-  background: linear-gradient(
-    110deg,
-    var(--accent-orange) 20%,
-    var(--accent-teal) 40%,
-    var(--accent-blue) 60%,
-    var(--accent-orange) 80%
-  );
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 6s linear infinite;
-}
-
-@keyframes shimmer {
-  to {
-    background-position: -250% 0;
-  }
-}
-
 /* Animated conic beam border — wrap element in .beam-border with p-px */
 @property --gradient-angle {
   syntax: "<angle>";
