@@ -22,7 +22,7 @@ export function OpenSourceCTA() {
               className="h-full w-full rounded-2xl"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(230,126,34,0.15), transparent 40%, transparent 60%, rgba(46,204,113,0.15))",
+                  "linear-gradient(135deg, rgba(249,115,22,0.15), transparent 40%, transparent 60%, rgba(45,212,191,0.15))",
               }}
             />
           </div>
@@ -47,7 +47,7 @@ export function OpenSourceCTA() {
                 href={SITE.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 rounded-xl bg-accent-teal px-6 py-3 font-medium text-bg-primary transition-all hover:brightness-110 hover:shadow-[0_0_30px_rgba(46,204,113,0.25)]"
+                className="group flex items-center gap-2 rounded-xl bg-accent-teal px-6 py-3 font-medium text-bg-primary transition-all hover:brightness-110 hover:shadow-[0_0_30px_rgba(45,212,191,0.3)]"
               >
                 <Star className="h-4 w-4 transition-transform group-hover:rotate-[360deg] group-hover:duration-500" />
                 Star on GitHub
@@ -74,8 +74,8 @@ export function OpenSourceCTA() {
 
             {/* Tech stats */}
             <p className="mt-8 font-mono text-xs text-text-tertiary">
-              {STATS.license} Licensed · {STATS.dependencies} dependencies · Claude Code
-              + OpenAI Codex
+              {STATS.license} Licensed · {STATS.releases}+ releases · Claude Code
+              + OpenAI Codex · MCP built in
             </p>
           </div>
         </motion.div>

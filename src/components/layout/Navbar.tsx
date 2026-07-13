@@ -10,6 +10,7 @@ import { SITE } from "@/lib/constants";
 const navLinks = [
   { label: "Agents", href: "#agents" },
   { label: "Features", href: "#features" },
+  { label: "CLI", href: "#cli" },
   { label: "How it Works", href: "#how-it-works" },
   { label: "Install", href: "#install" },
 ];

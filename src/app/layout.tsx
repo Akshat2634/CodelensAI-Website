@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { outfit, jetbrainsMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { FAQS, STATS } from "@/lib/constants";
 import "./globals.css";
 
 const siteUrl = "https://codelensai-dev.vercel.app";
@@ -9,11 +10,11 @@ const siteUrl = "https://codelensai-dev.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "CodelensAI — ROI Dashboard for Claude Code & OpenAI Codex",
+    default: "CodelensAI — ROI & Usage Analytics for Claude Code + OpenAI Codex",
     template: "%s | CodelensAI",
   },
   description:
-    "Measure your AI coding ROI. CodelensAI correlates Claude Code and OpenAI Codex token spend with actual git output — one dashboard, side by side. Get ROI grades, cost-per-commit, effective cost vs your plan, and line survival. One command: npx codelens-ai.",
+    "Measure your AI coding ROI. CodelensAI correlates Claude Code and OpenAI Codex token spend with actual git output — ROI grades, cost-per-commit, AI code share, value leak, billing blocks, a Claude Code statusline, and an MCP server. One command: npx codelens-ai.",
   keywords: [
     "AI coding agent",
     "AI agent ROI",
@@ -27,6 +28,18 @@ export const metadata: Metadata = {
     "effective cost per commit",
     "AI subscription cost",
     "token analytics",
+    "ccusage alternative",
+    "Claude Code usage tracker",
+    "Claude token usage CLI",
+    "Claude Code statusline",
+    "Claude Code MCP server",
+    "MCP usage tools",
+    "Claude billing blocks",
+    "5-hour billing window",
+    "token burn rate",
+    "AI code share",
+    "value leak",
+    "AI ROI report",
     "developer tools",
     "productivity dashboard",
     "cost tracking",
@@ -55,7 +68,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "CodelensAI — Are you getting ROI from Claude Code & Codex?",
     description:
-      "The open-source CLI dashboard that ties your Claude Code and OpenAI Codex token spend to actual git output — side by side. One command: npx codelens-ai.",
+      "The open-source CLI that ties your Claude Code and OpenAI Codex token spend to actual git output — dashboard, ROI reports, billing blocks, statusline, and MCP server. One command: npx codelens-ai.",
     siteName: "CodelensAI",
     images: [
       {
@@ -120,7 +133,7 @@ const jsonLd = {
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux, Windows",
   description:
-    "Open-source CLI dashboard that measures your AI coding ROI by correlating Claude Code and OpenAI Codex token spend with actual git output — one dashboard with per-agent tabs.",
+    "Open-source CLI that measures your AI coding ROI by correlating Claude Code and OpenAI Codex token spend with actual git output — dashboard with per-agent tabs, ROI reports, usage tables, billing blocks, a Claude Code statusline, and an MCP server.",
   url: siteUrl,
   author: {
     "@type": "Person",
@@ -132,10 +145,36 @@ const jsonLd = {
     price: "0",
     priceCurrency: "USD",
   },
+  featureList: [
+    "Multi-agent dashboard (Claude Code + OpenAI Codex)",
+    "ROI grade and cost per commit",
+    "AI code share and value leak",
+    "Line survival rate",
+    "Effective cost vs subscription plan",
+    "Daily / weekly / monthly usage tables",
+    "5-hour billing blocks with burn rate",
+    "Claude Code statusline",
+    "MCP server for in-chat usage queries",
+    "Markdown / HTML ROI reports",
+  ],
   license: "https://opensource.org/licenses/MIT",
   codeRepository: "https://github.com/Akshat2634/Codelens-AI",
   downloadUrl: "https://www.npmjs.com/package/codelens-ai",
-  softwareVersion: "0.9.2",
+  softwareVersion: STATS.version,
+};
+
+// FAQPage structured data — mirrors the visible FAQ section
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
 };
 
 export default function RootLayout({
@@ -150,6 +189,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       </head>
       <body className="antialiased">
