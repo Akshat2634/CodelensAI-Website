@@ -98,9 +98,12 @@ export function HeroSection() {
               <TextReveal text="Stop guessing." controlled />
             </span>
             <br />
-            <span className="gradient-text-orange-teal">
-              <TextReveal text="Start measuring." controlled />
-            </span>
+            <motion.span
+              variants={item}
+              className="gradient-text-orange-teal inline-block"
+            >
+              Start measuring.
+            </motion.span>
           </h1>
 
           {/* Subheadline */}
