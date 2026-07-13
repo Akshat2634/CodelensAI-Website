@@ -100,7 +100,7 @@ export function HeroSection() {
             <br />
             <motion.span
               variants={item}
-              className="gradient-text-orange-teal inline-block"
+              className="text-shimmer inline-block"
             >
               Start measuring.
             </motion.span>
