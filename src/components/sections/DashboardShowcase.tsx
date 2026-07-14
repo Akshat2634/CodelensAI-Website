@@ -6,20 +6,22 @@ import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-// Drop the demo recording at public/codelens-demo.mp4 (silent, ~10–30s, 720–1080p).
-// A WebM alternate at public/codelens-demo.webm is used first when present.
+// Demo recording lives at public/codelens-demo.mp4 (1080×1080, ~54s, H.264).
+// The current file has NO audio track — flip HAS_AUDIO to true once a version
+// with sound is in place to re-enable the mute/unmute control.
 const VIDEO_MP4 = "/codelens-demo.mp4";
 const VIDEO_WEBM = "/codelens-demo.webm";
-const POSTER = "/screenshots/overview.webp";
+const HAS_AUDIO = false;
 
 export function DashboardShowcase() {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(ref, { margin: "-120px" });
 
-  // Play intent: autoplay by default, but never under prefers-reduced-motion
-  // (unless the visitor manually presses play).
+  // Autoplay by default, but never under prefers-reduced-motion unless the
+  // visitor manually presses play. `isPlaying` mirrors the real element state.
   const [wantsPlay, setWantsPlay] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   // Start muted — browsers only autoplay muted video; user can unmute for sound.
   const [muted, setMuted] = useState(true);
   const userInteracted = useRef(false);
@@ -43,19 +45,25 @@ export function DashboardShowcase() {
     }
   }, [wantsPlay, isInView]);
 
-  const togglePlay = useCallback(() => {
+  const play = useCallback(() => {
     userInteracted.current = true;
-    setWantsPlay((p) => !p);
+    setWantsPlay(true);
+    videoRef.current?.play().catch(() => {});
+  }, []);
+
+  const pause = useCallback(() => {
+    setWantsPlay(false);
+    videoRef.current?.pause();
   }, []);
 
   const toggleMute = useCallback(() => {
     userInteracted.current = true;
     setMuted((m) => {
       const next = !m;
-      if (!next) setWantsPlay(true); // unmuting should also start playback
+      if (!next) play(); // unmuting should also start playback
       return next;
     });
-  }, []);
+  }, [play]);
 
   return (
     <section
@@ -76,7 +84,7 @@ export function DashboardShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative mx-auto max-w-5xl"
+            className="relative mx-auto max-w-2xl"
           >
             {/* Browser chrome */}
             <div className="overflow-hidden rounded-xl border border-border-subtle shadow-2xl shadow-shadow-heavy">
@@ -94,58 +102,60 @@ export function DashboardShowcase() {
                 </div>
               </div>
 
-              {/* Video */}
-              <div className="relative bg-screenshot-bg">
+              {/* Video (square 1:1 source) */}
+              <div className="group relative aspect-square bg-terminal-content-bg">
                 <video
                   ref={videoRef}
-                  className="block aspect-video h-full w-full object-cover object-top"
-                  poster={POSTER}
+                  className="block h-full w-full object-cover"
                   muted
                   loop
                   playsInline
                   preload="metadata"
                   aria-label="CodelensAI dashboard product demo"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
                 >
                   <source src={VIDEO_WEBM} type="video/webm" />
                   <source src={VIDEO_MP4} type="video/mp4" />
                 </video>
 
-                {/* Controls */}
-                <div className="absolute bottom-3 right-3 flex items-center gap-2">
+                {/* Center play button — shown whenever paused */}
+                {!isPlaying && (
                   <button
-                    onClick={toggleMute}
-                    aria-label={muted ? "Unmute demo" : "Mute demo"}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110"
+                    onClick={play}
+                    aria-label="Play demo"
+                    className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors hover:bg-black/10"
                   >
-                    {muted ? (
-                      <VolumeX className="h-4 w-4" />
-                    ) : (
-                      <Volume2 className="h-4 w-4" />
-                    )}
+                    <span className="flex h-16 w-16 items-center justify-center rounded-full bg-accent-teal text-bg-primary shadow-lg transition-transform hover:scale-105">
+                      <Play className="h-6 w-6 translate-x-[2px]" />
+                    </span>
                   </button>
-                  <button
-                    onClick={togglePlay}
-                    aria-label={wantsPlay ? "Pause demo" : "Play demo"}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110"
-                  >
-                    {wantsPlay ? (
-                      <Pause className="h-4 w-4" />
-                    ) : (
-                      <Play className="h-4 w-4 translate-x-[1px]" />
-                    )}
-                  </button>
-                </div>
+                )}
 
-                {/* Unmute nudge — shown only while muted */}
-                {muted && (
-                  <button
-                    onClick={toggleMute}
-                    className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-arrow-bg px-3 py-2 text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover"
-                    aria-label="Tap for sound"
-                  >
-                    <Volume2 className="h-3.5 w-3.5" />
-                    <span className="text-[11px] font-medium">Tap for sound</span>
-                  </button>
+                {/* Bottom-right controls — shown while playing */}
+                {isPlaying && (
+                  <div className="absolute bottom-3 right-3 flex items-center gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+                    {HAS_AUDIO && (
+                      <button
+                        onClick={toggleMute}
+                        aria-label={muted ? "Unmute demo" : "Mute demo"}
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110"
+                      >
+                        {muted ? (
+                          <VolumeX className="h-4 w-4" />
+                        ) : (
+                          <Volume2 className="h-4 w-4" />
+                        )}
+                      </button>
+                    )}
+                    <button
+                      onClick={pause}
+                      aria-label="Pause demo"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110"
+                    >
+                      <Pause className="h-4 w-4" />
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
