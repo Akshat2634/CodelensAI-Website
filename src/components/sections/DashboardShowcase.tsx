@@ -1,105 +1,72 @@
 "use client";
 
 import { useRef, useState, useCallback, useEffect } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const slides = [
-  {
-    src: "/screenshots/overview.webp",
-    alt: "CodelensAI Dashboard — multi-agent overview with All Agents, Claude Code, and OpenAI Codex tabs and a weekly report",
-    label: "Multi-Agent Overview",
-  },
-  {
-    src: "/screenshots/performance.webp",
-    alt: "CodelensAI Dashboard — Performance Overview with ROI grade, spend, commits shipped, and cost per commit",
-    label: "Performance & ROI",
-  },
-  {
-    src: "/screenshots/effective-cost.webp",
-    alt: "CodelensAI Dashboard — Effective Cost against your subscription plan and Attribution & Coverage confidence",
-    label: "Effective Cost",
-  },
-  {
-    src: "/screenshots/models.webp",
-    alt: "CodelensAI Dashboard — cost per commit by model across Claude and Codex, and a productivity heatmap",
-    label: "Model Comparison",
-  },
-  {
-    src: "/screenshots/autonomy.webp",
-    alt: "CodelensAI Dashboard — Agent Autonomy score with autopilot ratio, self-heal, toolbelt coverage, and commit velocity",
-    label: "Agent Autonomy",
-  },
-  {
-    src: "/screenshots/sessions.webp",
-    alt: "CodelensAI Dashboard — sortable sessions table with per-session model, cost, commits, and grade",
-    label: "Session Analysis",
-  },
-];
-
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 300 : -300,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction > 0 ? -300 : 300,
-    opacity: 0,
-  }),
-};
-
 export function DashboardShowcase() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const userPausedRef = useRef(false);
+  const isInView = useInView(ref, { margin: "-15% 0px" });
 
-  const goTo = useCallback(
-    (index: number) => {
-      setDirection(index > current ? 1 : -1);
-      setCurrent(index);
-    },
-    [current]
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  // Read once on the client; gates the autoplay effect only, never the markup.
+  const [reduceMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 
-  const prev = useCallback(() => {
-    setDirection(-1);
-    setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1));
-  }, []);
-
-  const next = useCallback(() => {
-    setDirection(1);
-    setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1));
-  }, []);
-
-  // Auto-advance every 6s once in view; pause on hover/focus and for reduced motion
+  // Force muted so browsers allow the scroll-triggered autoplay.
   useEffect(() => {
-    if (!isInView || paused) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(next, 6000);
-    return () => clearInterval(id);
-  }, [isInView, paused, next]);
+    if (videoRef.current) videoRef.current.muted = true;
+  }, []);
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
-    },
-    [prev, next]
-  );
+  // Autoplay (muted) when scrolled into view; pause when it leaves — unless the
+  // user paused it themselves or prefers reduced motion.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || reduceMotion) return;
+    if (isInView && !userPausedRef.current) {
+      v.play().catch(() => {});
+    } else if (!isInView) {
+      v.pause();
+    }
+  }, [isInView, reduceMotion]);
+
+  const togglePlay = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      userPausedRef.current = false;
+      v.play().catch(() => {});
+    } else {
+      userPausedRef.current = true;
+      v.pause();
+    }
+  }, []);
+
+  const toggleMute = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const nextMuted = !v.muted;
+    v.muted = nextMuted;
+    // Unmuting is a clear intent to watch — make sure it's actually playing.
+    if (!nextMuted && v.paused) {
+      userPausedRef.current = false;
+      v.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <section id="dashboard" className="relative pt-12 pb-6 sm:pt-16 sm:pb-8 overflow-hidden">
       <Container wide>
         <SectionHeading
-          label="Dashboard Preview"
+          label="Product Demo"
           heading="See exactly where your tokens go"
           subheading="A local-first dashboard that breaks every dollar of your Claude Code and Codex spend into auditable, per-agent insights."
           accent="teal"
@@ -110,90 +77,77 @@ export function DashboardShowcase() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative mx-auto max-w-5xl"
+            className="relative mx-auto max-w-2xl"
           >
-            {/* Browser chrome */}
+            {/* Video frame */}
             <div
-              role="region"
-              aria-label="Dashboard screenshots — use arrow keys to navigate"
-              tabIndex={0}
-              onKeyDown={handleKeyDown}
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-              onFocus={() => setPaused(true)}
-              onBlur={() => setPaused(false)}
-              className="overflow-hidden rounded-xl border border-border-subtle shadow-2xl shadow-shadow-heavy outline-none focus-visible:ring-2 focus-visible:ring-accent-teal/50"
+              onClick={togglePlay}
+              className="group relative aspect-square cursor-pointer overflow-hidden rounded-2xl border border-border-subtle bg-screenshot-bg shadow-2xl shadow-shadow-heavy"
             >
-              {/* Address bar */}
-              <div className="flex items-center gap-2 border-b border-border-subtle bg-terminal-bg px-4 py-2.5">
-                <div className="flex gap-1.5">
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                </div>
-                <div className="ml-3 flex-1 rounded-md bg-terminal-url-bg px-3 py-1">
-                  <span className="font-mono text-[11px] text-text-tertiary">
-                    localhost:3457
+              <video
+                ref={videoRef}
+                src="/media/codelens-demo.mp4"
+                poster="/media/codelens-demo-poster.jpg"
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="CodelensAI product demo — AI agent spend, tokens burned, and per-agent cost breakdown for Claude Code and OpenAI Codex"
+                className="h-full w-full object-cover"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onVolumeChange={(e) => setIsMuted(e.currentTarget.muted)}
+              />
+
+              {/* Center play affordance when paused (decorative — controls below are keyboard-accessible) */}
+              {!isPlaying && (
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15 backdrop-blur-md">
+                    <Play className="ml-1 h-7 w-7 fill-white text-white" />
                   </span>
                 </div>
-              </div>
+              )}
 
-              {/* Screenshot carousel */}
-              <div className="relative bg-screenshot-bg overflow-hidden">
-                {/* Fixed-height container to prevent layout shift */}
-                <div className="relative aspect-[14/9]">
-                  <AnimatePresence initial={false} custom={direction} mode="wait">
-                    <motion.img
-                      key={current}
-                      custom={direction}
-                      variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
-                      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      src={slides[current].src}
-                      alt={slides[current].alt}
-                      className="absolute inset-0 h-full w-full object-cover object-top"
-                    />
-                  </AnimatePresence>
-                </div>
-
-                {/* Arrow buttons */}
+              {/* Controls */}
+              <div className="absolute bottom-3 right-3 flex items-center gap-2">
                 <button
-                  onClick={prev}
-                  aria-label="Previous screenshot"
-                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110"
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlay();
+                  }}
+                  aria-label={isPlaying ? "Pause demo video" : "Play demo video"}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal/60"
                 >
-                  <ChevronLeft className="h-5 w-5" />
+                  {isPlaying ? (
+                    <Pause className="h-4 w-4" />
+                  ) : (
+                    <Play className="ml-0.5 h-4 w-4" />
+                  )}
                 </button>
                 <button
-                  onClick={next}
-                  aria-label="Next screenshot"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110"
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleMute();
+                  }}
+                  aria-label={isMuted ? "Unmute demo video" : "Mute demo video"}
+                  aria-pressed={!isMuted}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-arrow-bg text-arrow-text backdrop-blur-sm transition-all hover:bg-arrow-bg-hover hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal/60"
                 >
-                  <ChevronRight className="h-5 w-5" />
+                  {isMuted ? (
+                    <VolumeX className="h-4 w-4" />
+                  ) : (
+                    <Volume2 className="h-4 w-4" />
+                  )}
                 </button>
               </div>
             </div>
 
-            {/* Navigation dots + label */}
-            <div className="mt-5 flex flex-col items-center gap-3">
-              <div className="flex items-center gap-2">
-                {slides.map((slide, i) => (
-                  <button
-                    key={i}
-                    onClick={() => goTo(i)}
-                    aria-label={`Go to ${slide.label}`}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === current
-                        ? "w-8 bg-accent-teal"
-                        : "w-2 bg-text-tertiary/30 hover:bg-text-tertiary/60"
-                    }`}
-                  />
-                ))}
-              </div>
+            {/* Caption */}
+            <div className="mt-5 flex justify-center">
               <span className="font-mono text-xs text-text-tertiary">
-                {slides[current].label}
+                Live product demo · tap {isMuted ? "the speaker to unmute" : "to mute"}
               </span>
             </div>
 
