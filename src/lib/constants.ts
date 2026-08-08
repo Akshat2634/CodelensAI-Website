@@ -19,28 +19,9 @@ export const SITE = {
   author: "Akshat Sahu",
 };
 
-export const STATS = {
-  weeklyDownloads: "1,500+",
-  version: "0.9.13",
-  license: "MIT",
-  dependencies: 4,
-  releases: 35,
-  lineSurvivalRate: 90,
-  costPerCommit: 1.87,
-  aiCodeShare: 64,
-  valueLeakPct: 7,
-  tokenEfficiency: 98,
-  commitsShipped: 219,
-  planUtilization: 3.2,
-  overallGrade: "A",
-};
-
-// Combined "All Agents" totals — must stay the sum of AGENTS below.
-export const COMBINED = {
-  spend: "$409.75",
-  commits: STATS.commitsShipped,
-  costPerCommit: `$${STATS.costPerCommit.toFixed(2)}`,
-};
+export function formatUsd(value: number) {
+  return `$${value.toFixed(2)}`;
+}
 
 // Supported coding agents — read straight from your local session files.
 // Figures are illustrative of a real month analyzed with
@@ -49,31 +30,53 @@ export const AGENTS = [
   {
     name: "Claude Code",
     models: "Opus · Sonnet · Haiku",
-    spend: "$243.75",
+    spend: 243.75,
     commits: 104,
-    costPerCommit: "$2.34",
     accent: "orange" as const,
     path: "~/.claude/projects/",
   },
   {
     name: "OpenAI Codex",
     models: "GPT-5.x Codex · GPT-5.x",
-    spend: "$107.07",
+    spend: 107.07,
     commits: 75,
-    costPerCommit: "$1.43",
     accent: "teal" as const,
     path: "~/.codex/sessions/",
   },
   {
     name: "GitHub Copilot",
     models: "Claude · GPT · Gemini",
-    spend: "$58.93",
+    spend: 58.93,
     commits: 40,
-    costPerCommit: "$1.47",
     accent: "blue" as const,
     path: "~/.copilot/session-state/",
   },
 ];
+
+const combinedSpend = AGENTS.reduce((sum, agent) => sum + agent.spend, 0);
+const combinedCommits = AGENTS.reduce((sum, agent) => sum + agent.commits, 0);
+
+export const COMBINED = {
+  spend: combinedSpend,
+  commits: combinedCommits,
+  costPerCommit: combinedSpend / combinedCommits,
+};
+
+export const STATS = {
+  weeklyDownloads: "1,500+",
+  version: "0.9.13",
+  license: "MIT",
+  dependencies: 4,
+  releases: 35,
+  lineSurvivalRate: 90,
+  costPerCommit: COMBINED.costPerCommit,
+  aiCodeShare: 64,
+  valueLeakPct: 7,
+  tokenEfficiency: 98,
+  commitsShipped: COMBINED.commits,
+  planUtilization: 3.2,
+  overallGrade: "A",
+};
 
 export const FEATURES: Feature[] = [
   {
@@ -104,7 +107,6 @@ export const FEATURES: Feature[] = [
       "What percentage of all merged lines this window did the AI actually write? Measured from git history — not surveys, not vibes.",
     accent: "teal" as const,
     size: "small" as const,
-    isNew: true,
   },
   {
     title: "Value Leak",
@@ -112,12 +114,11 @@ export const FEATURES: Feature[] = [
       "The dollars and percent of spend that never became committed code. Find the sessions burning tokens without shipping anything.",
     accent: "red" as const,
     size: "small" as const,
-    isNew: true,
   },
   {
     title: "Model Comparison",
     description:
-      "Compare cost and efficiency across Opus, Sonnet, Haiku, GPT-5.x Codex, Gemini, and Copilot-only models. New model IDs are auto-priced from LiteLLM's public price map — no code change needed.",
+      "Compare cost and efficiency across Opus, Sonnet, Haiku, GPT-5.x Codex, Gemini, and models available through GitHub Copilot. New model IDs are auto-priced from LiteLLM's public price map — no code change needed.",
     accent: "blue" as const,
     size: "large" as const,
   },
@@ -176,7 +177,6 @@ export const FEATURES: Feature[] = [
       "codelens-ai report prints an ROI scorecard — or exports a self-contained Markdown/HTML one-pager. Add the live statusline to Claude Code for an always-on ROI HUD.",
     accent: "orange" as const,
     size: "small" as const,
-    isNew: true,
   },
   {
     title: "Privacy First",
@@ -246,7 +246,7 @@ export const FAQS = [
   },
   {
     q: "How is GitHub Copilot usage measured?",
-    a: "The standalone GitHub Copilot CLI records per-session token totals in ~/.copilot/session-state/. CodelensAI prices those from GitHub's published Copilot per-token table — Claude, GPT, Gemini, and Copilot-only models like Raptor mini and Kimi K2.7 Code — so reports stay correct even offline. Copilot bills a flat plan plus premium requests, so the dollar figures are API-equivalent value; pass --copilot-plan to see effective cost against your real fee. IDE Copilot completions aren't analyzed — only the CLI keeps a durable local token record.",
+    a: "The standalone GitHub Copilot CLI records per-session token totals in ~/.copilot/session-state/. CodelensAI prices those from GitHub's published per-token table across Claude, GPT, Gemini, GitHub-fine-tuned, and open-weight models, so reports stay correct even offline. Under GitHub's current usage-based billing, Copilot plans include monthly AI Credits and token usage consumes that allowance at published model rates; additional usage can be billed in AI Credits when enabled. The dollar figures are API-equivalent value, so pass --copilot-plan to see effective cost against your real fee. IDE Copilot completions aren't analyzed — only the CLI keeps a durable local token record.",
   },
   {
     q: "Can Claude answer questions about my own usage?",

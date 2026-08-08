@@ -24,7 +24,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ROIGradeBadge } from "@/components/ui/ROIGradeBadge";
 import { AnimatedBarList } from "@/components/ui/AnimatedBarList";
-import { AGENTS, COMBINED, FEATURES, STATS, type Accent } from "@/lib/constants";
+import { AGENTS, COMBINED, FEATURES, STATS, formatUsd, type Accent } from "@/lib/constants";
 
 const accentTextColor: Record<Accent, string> = {
   orange: "text-accent-orange",
@@ -57,7 +57,7 @@ function AgentTabsViz() {
   const rows = AGENTS.map((a) => ({
     label: a.name,
     dot: accentDot[a.accent],
-    value: a.spend,
+    value: formatUsd(a.spend),
     sub: `${a.commits} commits`,
   }));
   return (
@@ -108,7 +108,7 @@ function CostBars() {
       items={[
         { label: "Today", pct: 40, value: "$0.00" },
         { label: "Week", pct: 88, value: "$140.63" },
-        { label: "Month", pct: 100, value: COMBINED.spend },
+        { label: "Month", pct: 100, value: formatUsd(COMBINED.spend) },
       ]}
       barColor="bg-accent-orange"
       valueClassName="text-[11px] text-accent-orange"
@@ -183,7 +183,7 @@ function ValueLeakViz() {
         <div className="mt-1 text-[10px] text-text-tertiary">of spend leaked</div>
       </div>
       <div className="text-left text-xs leading-snug text-text-tertiary">
-        $24.56 that never
+        {formatUsd((COMBINED.spend * STATS.valueLeakPct) / 100)} that never
         <br />
         became a commit
       </div>
