@@ -53,14 +53,14 @@ src/
 │   └── utils.ts            # cn() helper
 │
 └── public/
-    └── screenshots/        # Dashboard screenshots
+    └── media/              # Product demo video + poster frame
 ```
 
 ## Features
 
 - Dark / Light / System theme toggle
 - Animated terminal with typewriter effect
-- Dashboard screenshot carousel with auto-advance, keyboard, and slide navigation
+- Product demo video that autoplays in view, with click-to-pause and mute toggle
 - Interactive CLI toolkit explorer (report / daily / blocks / statusline / mcp tabs)
 - Interactive ROI calculator with live effective-cost math
 - Bento-grid feature cards with mini-visualizations

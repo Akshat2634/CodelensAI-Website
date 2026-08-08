@@ -21,10 +21,10 @@ export const SITE = {
 
 export const STATS = {
   weeklyDownloads: "1,500+",
-  version: "0.9.11",
+  version: "0.9.13",
   license: "MIT",
   dependencies: 4,
-  releases: 33,
+  releases: 35,
   lineSurvivalRate: 90,
   costPerCommit: 1.87,
   aiCodeShare: 64,
