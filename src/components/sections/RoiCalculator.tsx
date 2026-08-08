@@ -12,6 +12,7 @@ const PLANS = [
   { label: "Max 5×", fee: 100 },
   { label: "Max 20×", fee: 200 },
   { label: "Max 5× + Plus", fee: 120 },
+  { label: "Max 5× + Plus + Copilot Pro", fee: 130 },
 ];
 
 function gradeFor(costPerCommit: number): { grade: string; color: string } {
@@ -23,9 +24,11 @@ function gradeFor(costPerCommit: number): { grade: string; color: string } {
 }
 
 export function RoiCalculator() {
-  const [spend, setSpend] = useState(350);
-  const [commits, setCommits] = useState(180);
-  const [planIdx, setPlanIdx] = useState(1);
+  const [spend, setSpend] = useState(410);
+  const [commits, setCommits] = useState(220);
+  // Defaults to the three-agent combo so the demo lands on the same effective
+  // cost and plan utilization the rest of the page quotes.
+  const [planIdx, setPlanIdx] = useState(4);
 
   const plan = PLANS[planIdx];
   const apiPerCommit = spend / Math.max(commits, 1);

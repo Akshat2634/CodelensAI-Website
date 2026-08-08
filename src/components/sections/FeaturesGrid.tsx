@@ -24,7 +24,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ROIGradeBadge } from "@/components/ui/ROIGradeBadge";
 import { AnimatedBarList } from "@/components/ui/AnimatedBarList";
-import { FEATURES, STATS, type Accent } from "@/lib/constants";
+import { AGENTS, COMBINED, FEATURES, STATS, type Accent } from "@/lib/constants";
 
 const accentTextColor: Record<Accent, string> = {
   orange: "text-accent-orange",
@@ -40,18 +40,26 @@ const accentBg: Record<Accent, string> = {
   red: "bg-accent-red-dim",
 };
 
+const accentDot: Record<Accent, string> = {
+  orange: "bg-accent-orange",
+  teal: "bg-accent-teal",
+  blue: "bg-accent-blue",
+  red: "bg-accent-red",
+};
+
 // ── Mini-visualizations ──────────────────────────────────────────────
 
 function AgentTabsViz() {
   const tabs = [
     { label: "All Agents", active: true },
-    { label: "Claude Code", active: false },
-    { label: "OpenAI Codex", active: false },
+    ...AGENTS.map((a) => ({ label: a.name, active: false })),
   ];
-  const rows = [
-    { label: "Claude Code", dot: "bg-accent-orange", value: "$243.75", sub: "104 commits" },
-    { label: "OpenAI Codex", dot: "bg-accent-teal", value: "$107.07", sub: "75 commits" },
-  ];
+  const rows = AGENTS.map((a) => ({
+    label: a.name,
+    dot: accentDot[a.accent],
+    value: a.spend,
+    sub: `${a.commits} commits`,
+  }));
   return (
     <div className="mt-4">
       <div className="flex flex-wrap gap-1.5">
@@ -76,7 +84,7 @@ function AgentTabsViz() {
             <span className="ml-auto font-mono text-[11px] font-medium text-text-primary">
               {r.value}
             </span>
-            <span className="w-16 text-right font-mono text-[10px] text-text-tertiary">
+            <span className="w-20 shrink-0 whitespace-nowrap text-right font-mono text-[10px] text-text-tertiary">
               {r.sub}
             </span>
           </div>
@@ -99,8 +107,8 @@ function CostBars() {
     <AnimatedBarList
       items={[
         { label: "Today", pct: 40, value: "$0.00" },
-        { label: "Week", pct: 88, value: "$120.41" },
-        { label: "Month", pct: 100, value: "$350.82" },
+        { label: "Week", pct: 88, value: "$140.63" },
+        { label: "Month", pct: 100, value: COMBINED.spend },
       ]}
       barColor="bg-accent-orange"
       valueClassName="text-[11px] text-accent-orange"
@@ -209,9 +217,9 @@ function EffectiveCostViz() {
         <div className="mt-1 text-[11px] text-text-tertiary">plan value extracted</div>
       </div>
       <div className="text-right">
-        <div className="font-mono text-sm font-semibold text-text-primary">$0.67</div>
+        <div className="font-mono text-sm font-semibold text-text-primary">$0.59</div>
         <div className="text-[10px] text-text-tertiary">effective / commit</div>
-        <div className="mt-1.5 font-mono text-sm font-semibold text-text-primary">$0.028</div>
+        <div className="mt-1.5 font-mono text-sm font-semibold text-text-primary">$0.025</div>
         <div className="text-[10px] text-text-tertiary">/ surviving line</div>
       </div>
     </div>
@@ -225,6 +233,7 @@ function ModelBars() {
         { label: "Opus 4.8", pct: 100, value: "$158" },
         { label: "GPT-5 Codex", pct: 42, value: "$107" },
         { label: "Sonnet", pct: 38, value: "$79" },
+        { label: "Gemini 3.1", pct: 17, value: "$35" },
       ]}
       labelWidth="w-20"
       labelClassName="text-[11px] text-text-secondary"
@@ -413,7 +422,7 @@ export function FeaturesGrid() {
         <SectionHeading
           label="Key Features"
           heading="Everything you need to quantify your AI investment"
-          subheading="From per-agent ROI grades to token-level analytics — complete, auditable visibility into your Claude Code and Codex spend."
+          subheading="From per-agent ROI grades to token-level analytics — complete, auditable visibility into your Claude Code, Codex, and Copilot spend."
           accent="orange"
         />
 

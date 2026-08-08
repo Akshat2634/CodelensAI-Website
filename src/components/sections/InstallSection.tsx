@@ -50,8 +50,10 @@ export function InstallSection() {
 
             {/* Agent + backward-compat note */}
             <p className="mt-4 text-center text-xs text-text-secondary">
-              Reads <span className="text-accent-orange">~/.claude/projects/</span> and{" "}
-              <span className="text-accent-teal">~/.codex/sessions/</span> — no keys, no config.
+              Reads <span className="text-accent-orange">~/.claude/projects/</span>,{" "}
+              <span className="text-accent-teal">~/.codex/sessions/</span>, and{" "}
+              <span className="text-accent-blue">~/.copilot/session-state/</span> — no keys,
+              no config.
             </p>
             <p className="mt-2 text-center font-mono text-xs text-text-tertiary tracking-wide">
               Previously <span className="text-accent-teal">claude-roi</span> — same tool, new name

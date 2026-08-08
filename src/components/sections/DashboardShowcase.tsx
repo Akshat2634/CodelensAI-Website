@@ -68,7 +68,7 @@ export function DashboardShowcase() {
         <SectionHeading
           label="Product Demo"
           heading="See exactly where your tokens go"
-          subheading="A local-first dashboard that breaks every dollar of your Claude Code and Codex spend into auditable, per-agent insights."
+          subheading="A local-first dashboard that breaks every dollar of your Claude Code, Codex, and Copilot spend into auditable, per-agent insights."
           accent="teal"
         />
 
@@ -92,7 +92,7 @@ export function DashboardShowcase() {
                 muted
                 playsInline
                 preload="metadata"
-                aria-label="CodelensAI product demo — AI agent spend, tokens burned, and per-agent cost breakdown for Claude Code and OpenAI Codex"
+                aria-label="CodelensAI product demo — AI agent spend, tokens burned, and per-agent cost breakdown for Claude Code, OpenAI Codex, and GitHub Copilot"
                 className="h-full w-full object-cover"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}

@@ -75,7 +75,7 @@ export function OpenSourceCTA() {
             {/* Tech stats */}
             <p className="mt-8 font-mono text-xs text-text-tertiary">
               {STATS.license} Licensed · {STATS.releases}+ releases · Claude Code
-              + OpenAI Codex · MCP built in
+              + Codex + Copilot · MCP built in
             </p>
           </div>
         </motion.div>
