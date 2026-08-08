@@ -6,6 +6,7 @@ import { Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { COMBINED, STATS } from "@/lib/constants";
 
 const PLANS = [
   { label: "Claude Pro", fee: 20 },
@@ -24,8 +25,8 @@ function gradeFor(costPerCommit: number): { grade: string; color: string } {
 }
 
 export function RoiCalculator() {
-  const [spend, setSpend] = useState(410);
-  const [commits, setCommits] = useState(220);
+  const [spend, setSpend] = useState(Math.round(COMBINED.spend / 5) * 5);
+  const [commits, setCommits] = useState(STATS.commitsShipped);
   // Defaults to the three-agent combo so the demo lands on the same effective
   // cost and plan utilization the rest of the page quotes.
   const [planIdx, setPlanIdx] = useState(4);

@@ -5,7 +5,7 @@ import { Layers } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { AGENTS, COMBINED } from "@/lib/constants";
+import { AGENTS, COMBINED, formatUsd } from "@/lib/constants";
 
 const accentText = {
   orange: "text-accent-orange",
@@ -22,9 +22,9 @@ const accentDot = {
 } as const;
 
 const combined = [
-  { label: "Total spend", value: COMBINED.spend },
+  { label: "Total spend", value: formatUsd(COMBINED.spend) },
   { label: "Commits shipped", value: String(COMBINED.commits) },
-  { label: "Cost / commit", value: COMBINED.costPerCommit },
+  { label: "Cost / commit", value: formatUsd(COMBINED.costPerCommit) },
 ];
 
 export function AgentSupport() {
@@ -79,7 +79,7 @@ export function AgentSupport() {
           </motion.div>
 
           {/* Per-agent cards */}
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
             {AGENTS.map((agent, i) => (
               <motion.div
                 key={agent.name}
@@ -103,7 +103,7 @@ export function AgentSupport() {
                   <div className="mt-5 grid grid-cols-3 gap-2">
                     <div>
                       <div className={`font-mono text-lg font-bold ${accentText[agent.accent]}`}>
-                        {agent.spend}
+                        {formatUsd(agent.spend)}
                       </div>
                       <div className="mt-0.5 text-[10px] text-text-tertiary">spend</div>
                     </div>
@@ -115,7 +115,7 @@ export function AgentSupport() {
                     </div>
                     <div>
                       <div className="font-mono text-lg font-bold text-text-primary">
-                        {agent.costPerCommit}
+                        {formatUsd(agent.spend / agent.commits)}
                       </div>
                       <div className="mt-0.5 text-[10px] text-text-tertiary">/ commit</div>
                     </div>

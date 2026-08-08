@@ -14,6 +14,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TerminalWindow } from "@/components/ui/TerminalWindow";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { COMBINED, STATS, formatUsd } from "@/lib/constants";
 
 type OutputLine = { text: string; className?: string };
 
@@ -36,13 +37,13 @@ const TABS: CliTab[] = [
     output: [
       { text: "CodelensAI · ROI Report — last 30 days", className: "text-text-primary font-semibold" },
       { text: "─────────────────────────────────────────", className: "text-text-tertiary" },
-      { text: "ROI Grade            A", className: "text-accent-teal font-semibold" },
-      { text: "Spend (API-equiv)    $409.75", className: "text-text-secondary" },
-      { text: "Commits shipped      219 · $1.87/commit", className: "text-text-secondary" },
-      { text: "AI code share        64% of merged lines", className: "text-accent-blue" },
-      { text: "Line survival (24h)  90%", className: "text-text-secondary" },
-      { text: "Value leak           7% ($28.68) never committed", className: "text-accent-red" },
-      { text: "Plan utilization     3.2× your subscription", className: "text-accent-orange" },
+      { text: `ROI Grade            ${STATS.overallGrade}`, className: "text-accent-teal font-semibold" },
+      { text: `Spend (API-equiv)    ${formatUsd(COMBINED.spend)}`, className: "text-text-secondary" },
+      { text: `Commits shipped      ${COMBINED.commits} · ${formatUsd(COMBINED.costPerCommit)}/commit`, className: "text-text-secondary" },
+      { text: `AI code share        ${STATS.aiCodeShare}% of merged lines`, className: "text-accent-blue" },
+      { text: `Line survival (24h)  ${STATS.lineSurvivalRate}%`, className: "text-text-secondary" },
+      { text: `Value leak           ${STATS.valueLeakPct}% (${formatUsd((COMBINED.spend * STATS.valueLeakPct) / 100)}) never committed`, className: "text-accent-red" },
+      { text: `Plan utilization     ${STATS.planUtilization.toFixed(1)}× your subscription`, className: "text-accent-orange" },
       { text: "", className: "" },
       { text: "→ add --md or --html for a one-pager your manager can read", className: "text-text-tertiary" },
     ],
