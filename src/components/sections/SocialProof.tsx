@@ -45,8 +45,8 @@ export function SocialProof() {
         >
           <Quote className="absolute top-6 right-6 h-8 w-8 text-accent-orange/20" />
           <blockquote className="text-lg leading-relaxed text-text-primary sm:text-xl">
-            &ldquo;I was spending hundreds on Claude Code and Codex with no idea if it
-            was worth it. CodelensAI answers that in one command — in my dashboard, my
+            &ldquo;I was spending hundreds on Claude Code, Codex, and Copilot with no idea
+            if it was worth it. CodelensAI answers that in one command — in my dashboard, my
             terminal, my statusline, and now even in-chat over MCP.&rdquo;
           </blockquote>
           <div className="mt-6 flex items-center gap-3">

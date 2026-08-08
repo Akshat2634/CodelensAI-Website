@@ -5,7 +5,7 @@ import { Layers } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { AGENTS } from "@/lib/constants";
+import { AGENTS, COMBINED } from "@/lib/constants";
 
 const accentText = {
   orange: "text-accent-orange",
@@ -22,9 +22,9 @@ const accentDot = {
 } as const;
 
 const combined = [
-  { label: "Total spend", value: "$350.82" },
-  { label: "Commits shipped", value: "179" },
-  { label: "Cost / commit", value: "$1.96" },
+  { label: "Total spend", value: COMBINED.spend },
+  { label: "Commits shipped", value: String(COMBINED.commits) },
+  { label: "Cost / commit", value: COMBINED.costPerCommit },
 ];
 
 export function AgentSupport() {
@@ -33,12 +33,12 @@ export function AgentSupport() {
       <Container>
         <SectionHeading
           label="Multi-Agent"
-          heading="Two agents. One dashboard."
-          subheading="CodelensAI reads both your Claude Code and OpenAI Codex sessions. When both are present, switch tabs to compare them side by side — every metric recomputes for the selected agent."
+          heading="Three agents. One dashboard."
+          subheading="CodelensAI reads your Claude Code, OpenAI Codex, and GitHub Copilot CLI sessions. When more than one is present, switch tabs to compare them side by side — every metric recomputes for the selected agent."
           accent="teal"
         />
 
-        <div className="mx-auto mt-12 max-w-4xl">
+        <div className="mx-auto mt-12 max-w-5xl">
           {/* Source tabs (mirrors the real dashboard) */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -50,12 +50,14 @@ export function AgentSupport() {
             <span className="rounded-lg bg-accent-teal-dim px-3 py-1.5 font-mono text-xs font-medium text-accent-teal ring-1 ring-accent-teal/30">
               All Agents
             </span>
-            <span className="rounded-lg border border-border-subtle px-3 py-1.5 font-mono text-xs text-text-tertiary">
-              Claude Code
-            </span>
-            <span className="rounded-lg border border-border-subtle px-3 py-1.5 font-mono text-xs text-text-tertiary">
-              OpenAI Codex
-            </span>
+            {AGENTS.map((agent) => (
+              <span
+                key={agent.name}
+                className="rounded-lg border border-border-subtle px-3 py-1.5 font-mono text-xs text-text-tertiary"
+              >
+                {agent.name}
+              </span>
+            ))}
           </motion.div>
 
           {/* Combined "All Agents" summary */}
@@ -77,7 +79,7 @@ export function AgentSupport() {
           </motion.div>
 
           {/* Per-agent cards */}
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {AGENTS.map((agent, i) => (
               <motion.div
                 key={agent.name}

@@ -16,7 +16,7 @@ import { SITE, STATS } from "@/lib/constants";
 const terminalLines = [
   { text: "Starting CodelensAI dashboard...", color: "text-text-secondary" },
   {
-    text: "Parsing 45 sessions — Claude Code + OpenAI Codex",
+    text: "Parsing 58 sessions — Claude Code + Codex + Copilot",
     color: "text-text-secondary",
   },
   {
@@ -28,13 +28,13 @@ const terminalLines = [
     color: "text-accent-blue",
   },
   {
-    text: "ROI: A · $1.96/commit · AI share 64% · survival 90%",
+    text: `ROI: ${STATS.overallGrade} · $${STATS.costPerCommit.toFixed(2)}/commit · AI share ${STATS.aiCodeShare}% · survival ${STATS.lineSurvivalRate}%`,
     color: "text-accent-teal",
   },
 ];
 
 const staticTrustItems = [
-  "Claude Code + OpenAI Codex",
+  "Claude Code + Codex + Copilot",
   "MCP Server Built In",
   `${STATS.license} License`,
   "Zero Config",
@@ -81,13 +81,13 @@ export function HeroSection() {
           {/* Release badge */}
           <motion.a
             variants={item}
-            href="#cli"
+            href="#agents"
             className="group mb-6 flex items-center gap-2 rounded-full border border-border-subtle bg-bg-glass px-4 py-1.5 backdrop-blur-xl transition-all hover:border-accent-teal/40"
           >
             <Sparkles className="h-3.5 w-3.5 text-accent-teal" />
             <span className="font-mono text-xs text-text-secondary">
-              New in v{STATS.version.split(".").slice(0, 2).join(".")} — MCP server, billing
-              blocks & statusline
+              New in v{STATS.version.split(".").slice(0, 2).join(".")} — GitHub Copilot CLI
+              is now a third agent
             </span>
             <ArrowRight className="h-3 w-3 text-text-tertiary transition-transform group-hover:translate-x-0.5" />
           </motion.a>
@@ -112,8 +112,9 @@ export function HeroSection() {
             className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
           >
             The open-source ROI dashboard that ties your{" "}
-            <span className="text-text-primary">Claude Code</span> and{" "}
-            <span className="text-text-primary">OpenAI Codex</span> token spend to
+            <span className="text-text-primary">Claude Code</span>,{" "}
+            <span className="text-text-primary">OpenAI Codex</span>, and{" "}
+            <span className="text-text-primary">GitHub Copilot</span> token spend to
             actual git output — one command, all local.
           </motion.p>
 

@@ -10,11 +10,11 @@ const siteUrl = "https://codelensai-dev.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "CodelensAI — ROI & Usage Analytics for Claude Code + OpenAI Codex",
+    default: "CodelensAI — ROI & Usage Analytics for Claude Code, Codex + Copilot",
     template: "%s | CodelensAI",
   },
   description:
-    "Measure your AI coding ROI. CodelensAI correlates Claude Code and OpenAI Codex token spend with actual git output — ROI grades, cost-per-commit, AI code share, value leak, billing blocks, a Claude Code statusline, and an MCP server. One command: npx codelens-ai.",
+    "Measure your AI coding ROI. CodelensAI correlates Claude Code, OpenAI Codex, and GitHub Copilot token spend with actual git output — ROI grades, cost-per-commit, AI code share, value leak, billing blocks, a Claude Code statusline, and an MCP server. One command: npx codelens-ai.",
   keywords: [
     "AI coding agent",
     "AI agent ROI",
@@ -22,7 +22,13 @@ export const metadata: Metadata = {
     "OpenAI Codex",
     "Codex CLI",
     "GPT-5 Codex",
+    "GitHub Copilot",
+    "GitHub Copilot CLI",
+    "Copilot usage tracker",
+    "Copilot ROI",
+    "Copilot cost tracking",
     "Claude Code vs Codex",
+    "Claude Code vs Copilot",
     "agent comparison",
     "AI coding ROI",
     "effective cost per commit",
@@ -66,9 +72,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "CodelensAI — Are you getting ROI from Claude Code & Codex?",
+    title: "CodelensAI — Are you getting ROI from Claude Code, Codex & Copilot?",
     description:
-      "The open-source CLI that ties your Claude Code and OpenAI Codex token spend to actual git output — dashboard, ROI reports, billing blocks, statusline, and MCP server. One command: npx codelens-ai.",
+      "The open-source CLI that ties your Claude Code, OpenAI Codex, and GitHub Copilot token spend to actual git output — dashboard, ROI reports, billing blocks, statusline, and MCP server. One command: npx codelens-ai.",
     siteName: "CodelensAI",
     images: [
       {
@@ -133,7 +139,7 @@ const jsonLd = {
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux, Windows",
   description:
-    "Open-source CLI that measures your AI coding ROI by correlating Claude Code and OpenAI Codex token spend with actual git output — dashboard with per-agent tabs, ROI reports, usage tables, billing blocks, a Claude Code statusline, and an MCP server.",
+    "Open-source CLI that measures your AI coding ROI by correlating Claude Code, OpenAI Codex, and GitHub Copilot token spend with actual git output — dashboard with per-agent tabs, ROI reports, usage tables, billing blocks, a Claude Code statusline, and an MCP server.",
   url: siteUrl,
   author: {
     "@type": "Person",
@@ -146,7 +152,7 @@ const jsonLd = {
     priceCurrency: "USD",
   },
   featureList: [
-    "Multi-agent dashboard (Claude Code + OpenAI Codex)",
+    "Multi-agent dashboard (Claude Code + OpenAI Codex + GitHub Copilot)",
     "ROI grade and cost per commit",
     "AI code share and value leak",
     "Line survival rate",

@@ -1,8 +1,8 @@
 # CodelensAI Website
 
-The promotional landing page for [CodelensAI](https://github.com/Akshat2634/Codelens-AI) (`codelens-ai`) — the open-source ROI toolkit that ties your Claude Code and OpenAI Codex token spend to actual git output: a local dashboard with per-agent tabs, terminal ROI reports, ccusage-style usage tables, 5-hour billing blocks, a Claude Code statusline, and an MCP server.
+The promotional landing page for [CodelensAI](https://github.com/Akshat2634/Codelens-AI) (`codelens-ai`) — the open-source ROI toolkit that ties your Claude Code, OpenAI Codex, and GitHub Copilot token spend to actual git output: a local dashboard with per-agent tabs, terminal ROI reports, ccusage-style usage tables, 5-hour billing blocks, a Claude Code statusline, and an MCP server.
 
-> **Note:** Previously published as `claude-roi` — same tool, new name. The package was renamed to `codelens-ai` when it grew beyond a single agent; it now reads both Claude Code (`~/.claude/projects/`) and OpenAI Codex (`~/.codex/sessions/`) sessions.
+> **Note:** Previously published as `claude-roi` — same tool, new name. The package was renamed to `codelens-ai` when it grew beyond a single agent; it now reads Claude Code (`~/.claude/projects/`), OpenAI Codex (`~/.codex/sessions/`), and GitHub Copilot CLI (`~/.copilot/session-state/`) sessions.
 
 **Live site**: [codelensai.dev](https://codelensai-dev.vercel.app/)
 
